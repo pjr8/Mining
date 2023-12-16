@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1a2c0464-f436-462c-b123-db82e0f8f55b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/mining.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/authlib_1_5_21.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/miningproject.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/Item/Item.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/Item/Rarity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/Item/commands/CommandItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/chat/Chat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/commands/CommandAdmin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/commands/CommandTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/database/Database.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/database/playerdata/PlayerDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/database/playerdata/PlayerData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/database/playerdata/PlayerDataHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/Mining.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/objects/BlockHolder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/objects/BlockRespawn.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/objects/MiningPlayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/objects/OreDropTable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/objects/OreType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/objects/Pickaxe.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/update/UpdateEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/update/UpdateService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/update/UpdateType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/util/SkullCreator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2ZQyjn3qgDxhCYAGtknELX3J1GU" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/paulr/Desktop/desktop/me alex dimo server/server/plugins/DecentHolograms-2.8.5.jar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.1539646",
+    "project.structure.side.proportion": "0.34723482",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-18.0.2-corretto-18.0.2-3183f394aec4-38982a12" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1a2c0464-f436-462c-b123-db82e0f8f55b" name="Changes" comment="" />
+      <created>1702368734823</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1702368734823</updated>
+      <workItem from="1702368735842" duration="620000" />
+      <workItem from="1702369368950" duration="83000" />
+      <workItem from="1702369594501" duration="291000" />
+      <workItem from="1702369892088" duration="20000" />
+      <workItem from="1702369919293" duration="7196000" />
+      <workItem from="1702408677595" duration="17777000" />
+      <workItem from="1702512396079" duration="16970000" />
+      <workItem from="1702611299336" duration="4143000" />
+      <workItem from="1702667936727" duration="2145000" />
+      <workItem from="1702685357853" duration="5176000" />
+      <workItem from="1702694716678" duration="2506000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="executable:docker" />
+    <option featureType="dependencySupport" implementationName="java:org.spigotmc:spigot-api" />
+    <option featureType="com.intellij.facetType" implementationName="minecraft" />
+    <option featureType="dependencySupport" implementationName="executable:kubectl" />
+  </component>
+</project>

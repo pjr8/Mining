@@ -1,0 +1,9 @@
+name: Mining
+main: me.pjr8.Main
+version: '0.1 Development'
+api-version: '1.20'
+commands:
+  item:
+    description: Item
+  admin:
+    description: Admin mode
