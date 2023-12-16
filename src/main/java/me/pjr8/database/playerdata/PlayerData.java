@@ -3,6 +3,8 @@ package me.pjr8.database.playerdata;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import lombok.Data;
+import me.pjr8.mining.objects.PickaxeData;
+
 
 import java.util.UUID;
 
@@ -19,8 +21,10 @@ public class PlayerData {
     @DatabaseField(columnName = "last_join", columnDefinition = "BIGINT")
     private Long lastJoin;
 
-    /*@DatabaseField
-    private Pickaxe pickaxe; */
+    @DatabaseField(columnName = "pickaxe_data", columnDefinition = "TEXT")
+    private String pickaxeDataSerialized;
+
+    private PickaxeData pickaxeData;
 
     public PlayerData() {
     }

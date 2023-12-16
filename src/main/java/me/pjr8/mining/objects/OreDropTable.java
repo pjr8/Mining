@@ -1,6 +1,7 @@
 package me.pjr8.mining.objects;
 
 import me.pjr8.Item.Item;
+import me.pjr8.mining.enums.OreType;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;

@@ -3,10 +3,12 @@
     <output-path>$PROJECT_DIR$/../..</output-path>
     <root id="archive" name="mining.jar">
       <element id="module-output" name="miningproject" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/comphenix/packetwrapper/PacketWrapper/1.13-R0.1-SNAPSHOT/PacketWrapper-1.13-R0.1-20180825.172109-2.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/j256/ormlite/ormlite-core/6.1/ormlite-core-6.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/j256/ormlite/ormlite-jdbc/6.1/ormlite-jdbc-6.1.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/../authlib-1.5.21.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/comphenix/packetwrapper/PacketWrapper/1.13-R0.1-SNAPSHOT/PacketWrapper-1.13-R0.1-20180825.172109-2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/saicone/rtag/rtag-item/1.4.4/rtag-item-1.4.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/saicone/rtag/rtag/1.4.4/rtag-1.4.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/mojang/authlib/1.5.21/authlib-1.5.21.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

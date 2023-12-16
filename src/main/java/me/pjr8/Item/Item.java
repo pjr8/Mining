@@ -1,5 +1,6 @@
 package me.pjr8.Item;
 
+import com.saicone.rtag.RtagItem;
 import lombok.Getter;
 import me.pjr8.util.SkullCreator;
 import org.bukkit.ChatColor;
@@ -76,6 +77,11 @@ public enum Item {
         }
         itemStack.setItemMeta(itemMeta);
         itemStack.setAmount(amount);
+
+        RtagItem nbtItem = new RtagItem(itemStack);
+        nbtItem.set(item.getID(), "item_id");
+        itemStack = nbtItem.load();
+
         return itemStack;
     }
 }

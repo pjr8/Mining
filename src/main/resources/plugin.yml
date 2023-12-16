@@ -7,3 +7,5 @@ commands:
     description: Item
   admin:
     description: Admin mode
+  test:
+    description: Test

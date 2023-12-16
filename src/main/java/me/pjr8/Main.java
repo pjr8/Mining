@@ -5,6 +5,7 @@ import com.comphenix.protocol.ProtocolManager;
 import me.pjr8.Item.commands.CommandItem;
 import me.pjr8.chat.Chat;
 import me.pjr8.commands.CommandAdmin;
+import me.pjr8.commands.CommandTest;
 import me.pjr8.database.Database;
 import me.pjr8.database.playerdata.PlayerDao;
 import me.pjr8.database.playerdata.PlayerDataHandler;
@@ -56,6 +57,8 @@ public class Main extends JavaPlugin {
 
         this.getCommand("item").setExecutor(new CommandItem());
         this.getCommand("admin").setExecutor(new CommandAdmin());
+        this.getCommand("test").setExecutor(new CommandTest());
+
 
 
 

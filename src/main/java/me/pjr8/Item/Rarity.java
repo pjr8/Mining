@@ -11,7 +11,8 @@ public enum Rarity {
     UNCOMMON("Uncommon", new Color(86, 196, 120)),
     RARE("Rare", new Color(0, 208, 255)),
     EXOTIC("Exotic", new Color(224, 61, 91)),
-    MYTHIC("Mythic", new Color(139, 21, 230));
+    MYTHIC("Mythic", new Color(139, 21, 230)),
+    PICKAXE("PICKAXE", new Color(93, 222, 173));
 
     private final String name;
     private final Color color;

@@ -1,4 +1,4 @@
-package me.pjr8.mining.objects;
+package me.pjr8.mining.enums;
 
 import lombok.Getter;
 

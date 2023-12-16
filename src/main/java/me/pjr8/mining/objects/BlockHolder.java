@@ -1,6 +1,7 @@
 package me.pjr8.mining.objects;
 
 import lombok.Data;
+import me.pjr8.mining.enums.OreType;
 
 import java.util.Random;
 

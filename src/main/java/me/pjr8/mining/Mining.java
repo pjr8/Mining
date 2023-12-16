@@ -15,6 +15,7 @@ import com.comphenix.protocol.wrappers.WrappedBlockData;
 import me.pjr8.Main;
 import me.pjr8.chat.Chat;
 import me.pjr8.database.playerdata.PlayerData;
+import me.pjr8.mining.enums.OreType;
 import me.pjr8.mining.objects.*;
 import me.pjr8.update.UpdateEvent;
 import me.pjr8.update.UpdateType;
@@ -125,7 +126,7 @@ public class Mining implements Listener {
                 return;
             }
 
-            blockHolder.setDurabilityMined(blockHolder.getDurabilityMined() + 25); //TODO Change this with player's mining speed
+            blockHolder.setDurabilityMined(blockHolder.getDurabilityMined() + playerDataHolder.get(player.getUniqueId()).getPickaxeData().calculatePickaxePower());
 
             player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_DIGGING, 20, 100));
 
@@ -181,7 +182,6 @@ public class Mining implements Listener {
     public void onJoin(PlayerJoinEvent event) {
         miningPlayers.put(event.getPlayer(), new MiningPlayer(event.getPlayer()));
         playerBlockRespawn.put(event.getPlayer(), new ArrayList<BlockRespawn>());
-
     }
 
     @EventHandler

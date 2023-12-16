@@ -10,7 +10,6 @@ import java.util.HashMap;
 public class MiningPlayer {
 
     private Player player;
-
     private HashMap<Location, BlockHolder> currentOres;
 
     public MiningPlayer(Player player) {
