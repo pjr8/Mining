@@ -4,20 +4,23 @@ import lombok.Getter;
 import me.pjr8.Main;
 import me.pjr8.mining.enums.PickaxeType;
 import me.pjr8.mining.objects.PickaxeData;
+import me.pjr8.mining.objects.PickaxeUpgradeType;
+import me.pjr8.rank.GameRank;
+import me.pjr8.rank.ServerRank;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.*;
 import java.sql.SQLException;
-import java.util.Base64;
-import java.util.HashMap;
-import java.util.UUID;
+import java.util.*;
 import java.util.logging.Level;
 
 @Getter
@@ -37,12 +40,25 @@ public class PlayerDataHandler implements Listener {
         if (playerDao.playerExists(uuid)) {
             PlayerData playerData = playerDao.getPlayerData(uuid);
             playerData.setPickaxeData(unserializePickaxeData(playerData.getPickaxeDataSerialized()));
+            if (!Objects.equals(playerData.getName(), event.getPlayer().getName())) {
+                Main.logger.info("Player " + playerData.getName() + " has changed name to " + event.getPlayer().getName());
+                playerData.setName(event.getPlayer().getName());
+            }
             playerDataHolder.put(uuid, playerData);
+            if (playerData.getServerRank().equals(ServerRank.OWNER) || playerData.getServerRank().equals(ServerRank.ADMIN)) {
+                Main.adminMode.add(event.getPlayer());
+                event.getPlayer().setGameMode(GameMode.CREATIVE);
+            }
         } else {
             PlayerData playerData = new PlayerData();
             playerData.setUuid(uuid);
+            playerData.setGameRank(GameRank.BEGINNER);
+            playerData.setServerRank(ServerRank.USER);
             playerData.setName(event.getPlayer().getName());
-            playerData.setPickaxeData(new PickaxeData(PickaxeType.BEGINNER_PICKAXE));
+            PickaxeData pickaxeData = new PickaxeData(PickaxeType.BEGINNER_PICKAXE);
+            pickaxeData.setPickaxeUpgradeTypeArrayList(new ArrayList<PickaxeUpgradeType>());
+            playerData.setPickaxeData(pickaxeData);
+            playerData.setPickaxeDataSerialized(serializePickaxeData(playerData.getPickaxeData()));
             playerDataHolder.put(uuid, playerData);
         }
     }
@@ -71,6 +87,13 @@ public class PlayerDataHandler implements Listener {
         }
     }
 
+    public void updateOfflinePlayer(PlayerData playerData) {
+        try {
+            playerDao.addUpdatePlayerData(playerData);
+        } catch (SQLException event) {
+            Main.logger.log(Level.SEVERE, "[Mining] COULD NOT UPDATE PLAYER " + playerData.getName() + " TO DATABASE.");
+        }
+    }
     private String serializePickaxeData(PickaxeData pickaxeData) throws IOException {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);

@@ -4,26 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a2c0464-f436-462c-b123-db82e0f8f55b" name="Changes" comment="First commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/enums/PickaxeType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/mining.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/mining.xml" afterDir="false" />
+    <list default="true" id="1a2c0464-f436-462c-b123-db82e0f8f55b" name="Changes" comment="Added nbt on items for id system, custom mining power, start of custom pickaxes and serialization for the database of the pickaxe data &amp; handling.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/forge/Forge.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/commands/CommandPickaxeUpgrade.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/objects/PickaxeUpgradeType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/rank/GameRank.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/rank/ServerRank.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/rank/commands/CommandRank.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/authlib_1_5_21.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/Item/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/Item/Item.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/Item/Rarity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/Item/Rarity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/Item/commands/CommandItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/Item/commands/CommandItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/chat/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/chat/Chat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/commands/CommandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/commands/CommandTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/database/Database.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/database/playerdata/PlayerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/database/playerdata/PlayerData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/database/playerdata/PlayerDataHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/database/playerdata/PlayerDataHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/Mining.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/Mining.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/objects/BlockHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/objects/BlockHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/objects/MiningPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/objects/MiningPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/enums/OreType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/enums/OreType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/enums/PickaxeType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/enums/PickaxeType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/objects/OreDropTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/objects/OreDropTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/objects/OreType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/enums/OreType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/objects/Pickaxe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/objects/PickaxeData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/objects/PickaxeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/objects/PickaxeData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,7 +36,8 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="44280" />
+    <option name="totalTimeSeconds" value="74199" />
+    <option name="idleThresholdMs" value="300000" />
     <option name="gitIntegration" value="true" />
     <option name="naggedAbout" value="1" />
   </component>
@@ -65,33 +70,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/paulr/Desktop/desktop/me alex dimo server/development/libs/DecentHolograms-2.8.5.jar&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.1539646&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.34723482&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/paulr/Desktop/desktop/me alex dimo server/development/libs/DecentHolograms-2.8.5.jar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.1539646",
+    "project.structure.side.proportion": "0.34723482",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -126,6 +131,8 @@
       <workItem from="1702709042572" duration="7673000" />
       <workItem from="1702716736657" duration="1585000" />
       <workItem from="1702718353498" duration="4000" />
+      <workItem from="1702718553003" duration="222000" />
+      <workItem from="1702754838024" duration="33605000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <option name="closed" value="true" />
@@ -135,7 +142,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702697263968</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added nbt on items for id system, custom mining power, start of custom pickaxes and serialization for the database of the pickaxe data &amp; handling.">
+      <option name="closed" value="true" />
+      <created>1702718766652</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1702718766652</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,6 +164,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="First commit" />
+    <MESSAGE value="Added nbt on items for id system, custom mining power, start of custom pickaxes and serialization for the database of the pickaxe data &amp; handling." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added nbt on items for id system, custom mining power, start of custom pickaxes and serialization for the database of the pickaxe data &amp; handling." />
   </component>
 </project>

@@ -18,7 +18,7 @@ import java.util.List;
 public enum PickaxeType {
 
     UNKNOWN_PICKAXE(-1, 1, Rarity.PICKAXE, Material.WOODEN_PICKAXE),
-    BEGINNER_PICKAXE(1, 10, Rarity.PICKAXE, Material.WOODEN_PICKAXE),
+    BEGINNER_PICKAXE(1, 2, Rarity.PICKAXE, Material.WOODEN_PICKAXE),
     TEST_PICKAXE(2, 250, Rarity.PICKAXE, Material.DIAMOND_PICKAXE);
 
     private final int pickaxeID;
@@ -37,7 +37,7 @@ public enum PickaxeType {
         ItemStack itemStack = new ItemStack(pickaxeType.getMaterial());
         ItemMeta itemMeta = itemStack.getItemMeta();
         ArrayList<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.RESET + "" + ChatColor.of(new Color(194, 0, 42)) + "Pickaxe Power: " + pickaxeType.getPower());
+        lore.add(ChatColor.RESET + "" + ChatColor.of(new Color(68, 53, 15)) + "Pickaxe Power: " + pickaxeType.getPower());
         lore.add("");
         lore.add(ChatColor.RESET + "" + ChatColor.of(pickaxeType.rarity.getColor()) + pickaxeType.rarity.getName());
         itemMeta.setLore(lore);

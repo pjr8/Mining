@@ -15,19 +15,23 @@ import com.comphenix.protocol.wrappers.WrappedBlockData;
 import me.pjr8.Main;
 import me.pjr8.chat.Chat;
 import me.pjr8.database.playerdata.PlayerData;
+import me.pjr8.database.playerdata.PlayerDataHandler;
 import me.pjr8.mining.enums.OreType;
 import me.pjr8.mining.objects.*;
+import me.pjr8.rank.ServerRank;
 import me.pjr8.update.UpdateEvent;
 import me.pjr8.update.UpdateType;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -36,6 +40,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
@@ -46,15 +51,15 @@ import java.awt.Color;
 
 public class Mining implements Listener {
 
-    private final HashMap<UUID, PlayerData> playerDataHolder;
+    private final PlayerDataHandler playerDataHandler;
     private final ProtocolManager protocolManager;
     private final JavaPlugin plugin;
     private final HashMap<Player, MiningPlayer> miningPlayers = new HashMap<Player, MiningPlayer>();
     private final HashMap<Player, Location> miningPlayerCurrentBlock = new HashMap<Player, Location>();
     private final HashMap<Player, ArrayList<BlockRespawn>> playerBlockRespawn = new HashMap<Player, ArrayList<BlockRespawn>>();
 
-    public Mining(HashMap<UUID, PlayerData> playerDataHolder, ProtocolManager protocolManager, JavaPlugin plugin) {
-        this.playerDataHolder = playerDataHolder;
+    public Mining(PlayerDataHandler playerDataHandler, ProtocolManager protocolManager, JavaPlugin plugin) {
+        this.playerDataHandler = playerDataHandler;
         this.protocolManager = protocolManager;
         this.plugin = plugin;
         miningPacketReceiver();
@@ -126,7 +131,7 @@ public class Mining implements Listener {
                 return;
             }
 
-            blockHolder.setDurabilityMined(blockHolder.getDurabilityMined() + playerDataHolder.get(player.getUniqueId()).getPickaxeData().calculatePickaxePower());
+            blockHolder.setDurabilityMined(blockHolder.getDurabilityMined() + playerDataHandler.getPlayerDataHolder().get(player.getUniqueId()).getPickaxeData().calculatePickaxePower());
 
             player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_DIGGING, 20, 100));
 
@@ -178,10 +183,11 @@ public class Mining implements Listener {
 
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.NORMAL)
     public void onJoin(PlayerJoinEvent event) {
-        miningPlayers.put(event.getPlayer(), new MiningPlayer(event.getPlayer()));
-        playerBlockRespawn.put(event.getPlayer(), new ArrayList<BlockRespawn>());
+        Player player = event.getPlayer();
+        miningPlayers.put(player, new MiningPlayer(player));
+        playerBlockRespawn.put(player, new ArrayList<BlockRespawn>());
     }
 
     @EventHandler

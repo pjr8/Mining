@@ -9,3 +9,7 @@ commands:
     description: Admin mode
   test:
     description: Test
+  rank:
+    description: Rank
+  pickaxeupgrade:
+    description: Pickaxe Upgrade

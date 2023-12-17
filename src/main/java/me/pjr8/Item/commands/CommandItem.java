@@ -18,7 +18,8 @@ public class CommandItem implements CommandExecutor {
         }
         if (args.length == 0) {
             for (Item itemID : Item.values()) {
-                player.sendMessage("ID NAME: " + itemID.name() + ", ID NUMBER: " + itemID.getID());
+                player.sendMessage("ID NUMBER: " + itemID.getID() + ", ID NAME: " + itemID.name());
+
             }
         } else if (args.length == 1) {
             player.getInventory().addItem(Item.generateItem(Item.getItemFromID(Integer.parseInt(args[0])), 1));

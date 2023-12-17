@@ -14,8 +14,9 @@ public enum OreType {
 
     COAL_ORE(1, 100, new ItemStack(Material.COAL_ORE)),
     COAL_DEEPSLATE_ORE(2, 150, new ItemStack(Material.DEEPSLATE_COAL_ORE)),
-    COAL_BLOCK(3, 200, new ItemStack(Material.COAL_BLOCK)),
+    COAL_BLOCK(3, 250, new ItemStack(Material.COAL_BLOCK)),
     COAL_BLOCK_HEAD(4, 250, SkullCreator.itemFromBase64("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTY3YjQ3ZmJkMzdjNmQ5ZDhkMjJkOTczZTcyOTBlODA4NTJlOTI2NmEwNzZmYjdhYjIxNWFmZTkxYjgxZWQ2YyJ9fX0=")),
+    COAL_GILDED_BLACKSTONE(4, 500, new ItemStack(Material.GILDED_BLACKSTONE)),
 
     IRON_ORE(1, 500, new ItemStack(Material.IRON_ORE)),
     IRON_DEEPSLATE_ORE(2, 1000, new ItemStack(Material.DEEPSLATE_IRON_ORE)),

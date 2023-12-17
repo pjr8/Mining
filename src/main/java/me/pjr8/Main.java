@@ -9,7 +9,10 @@ import me.pjr8.commands.CommandTest;
 import me.pjr8.database.Database;
 import me.pjr8.database.playerdata.PlayerDao;
 import me.pjr8.database.playerdata.PlayerDataHandler;
+import me.pjr8.forge.Forge;
 import me.pjr8.mining.Mining;
+import me.pjr8.mining.commands.CommandPickaxeUpgrade;
+import me.pjr8.rank.commands.CommandRank;
 import me.pjr8.update.UpdateService;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -28,6 +31,7 @@ public class Main extends JavaPlugin {
     public static PlayerDataHandler playerDataHandler;
     public static Mining mining;
     public static Chat chat;
+    public static Forge forge;
     public static ProtocolManager protocolManager;
     public static UpdateService updateService;
 
@@ -49,17 +53,19 @@ public class Main extends JavaPlugin {
         updateService.start();
         playerDataHandler = new PlayerDataHandler(playerDao);
         protocolManager = ProtocolLibrary.getProtocolManager();
-        mining = new Mining(playerDataHandler.getPlayerDataHolder(), protocolManager, plugin);
-        chat = new Chat();
+        mining = new Mining(playerDataHandler, protocolManager, plugin);
+        chat = new Chat(playerDataHandler);
+        forge = new Forge();
         Bukkit.getServer().getPluginManager().registerEvents(playerDataHandler, plugin);
         Bukkit.getServer().getPluginManager().registerEvents(mining, plugin);
         Bukkit.getServer().getPluginManager().registerEvents(chat, plugin);
+        Bukkit.getServer().getPluginManager().registerEvents(forge, plugin);
 
         this.getCommand("item").setExecutor(new CommandItem());
         this.getCommand("admin").setExecutor(new CommandAdmin());
         this.getCommand("test").setExecutor(new CommandTest());
-
-
+        this.getCommand("rank").setExecutor(new CommandRank());
+        this.getCommand("pickaxeupgrade").setExecutor(new CommandPickaxeUpgrade());
 
 
         logger.info("has been enabled.");

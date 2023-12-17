@@ -3,14 +3,14 @@ package me.pjr8.Item;
 import com.saicone.rtag.RtagItem;
 import lombok.Getter;
 import me.pjr8.util.SkullCreator;
-import org.bukkit.ChatColor;
+import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.awt.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -30,12 +30,26 @@ public enum Item {
     //Items
 
     COAL(1000, "Coal", new ItemStack(Material.COAL), Rarity.ABUNDANT, null),
-    COAL_HEAD(1001, "Coal Head", SkullCreator.itemFromBase64("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTY3YjQ3ZmJkMzdjNmQ5ZDhkMjJkOTczZTcyOTBlODA4NTJlOTI2NmEwNzZmYjdhYjIxNWFmZTkxYjgxZWQ2YyJ9fX0="), Rarity.MYTHIC, null),
 
-    RAW_IRON(1000, "Raw Iron", new ItemStack(Material.RAW_IRON), Rarity.ABUNDANT, null),
+    CHARGED_COAL(1001, "Charged Coal", makeGlow(new ItemStack(Material.COAL)), Rarity.UNCOMMON, List.of(ChatColor.of("#DEDEDE") + "It emits a bright light...")),
 
-    IRON_HEAD(1023, "Iron Gem", SkullCreator.itemFromBase64("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzFhNzg1OTE2ZDJkMTdjYTBlYTJhZDIzZDgwMjQ3YzdjNTAyMTQ0MzkwM2JiYWI3YjI0Yjc5MzRiNmEzNjFhYiJ9fX0="), Rarity.ABUNDANT, null);
+    COAL_HEAD(1005, "Coal Head", SkullCreator.itemFromBase64("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTY3YjQ3ZmJkMzdjNmQ5ZDhkMjJkOTczZTcyOTBlODA4NTJlOTI2NmEwNzZmYjdhYjIxNWFmZTkxYjgxZWQ2YyJ9fX0="), Rarity.MYTHIC, null),
 
+    RAW_IRON(1050, "Raw Iron", new ItemStack(Material.RAW_IRON), Rarity.ABUNDANT, null),
+
+    IRON_HEAD(1051, "Iron Gem", SkullCreator.itemFromBase64("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzFhNzg1OTE2ZDJkMTdjYTBlYTJhZDIzZDgwMjQ3YzdjNTAyMTQ0MzkwM2JiYWI3YjI0Yjc5MzRiNmEzNjFhYiJ9fX0="), Rarity.ABUNDANT, null),
+
+    //Upgrade Items
+
+    ENERGY_INFUSED_ORB(5000, ChatColor.of("#ff9c2b") + "Energy-Infused Orb", makeGlow(new ItemStack(Material.FIRE_CHARGE)), Rarity.UPGRADE, List.of(ChatColor.of("#DEDEDE") + "It seems to give power...")),
+
+    SHARP_COAL_SHARD(5001, ChatColor.of("#828282") + "Sharp Coal Shard", makeGlow(new ItemStack(Material.FLINT)), Rarity.UPGRADE, List.of(ChatColor.of("#DEDEDE") + "Maybe it could be used to sharpen something...")),
+
+
+    //Task-related items
+
+    CORRUPTED_SHARD_MYSTSPORE(10001, ChatColor.DARK_RED + "" + ChatColor.MAGIC + "|" + ChatColor.RESET + ChatColor.DARK_RED + "Corr" + ChatColor.MAGIC + "|" + ChatColor.RESET + ChatColor.DARK_RED + "upted Sha" + ChatColor.MAGIC + "|" + ChatColor.RESET + ChatColor.DARK_RED + "rd" + ChatColor.MAGIC + "|", makeGlow(new ItemStack(Material.ECHO_SHARD)), Rarity.QUEST, List.of(ChatColor.of("#DEDEDE") + "It omits mysterious energy...")),
+    CURSED_REMAINS_MYSTSPORE(10002, ChatColor.RESET + "" + ChatColor.of("#ff3d3d") + "Cursed Remains", makeGlow(new ItemStack(Material.BROWN_DYE)), Rarity.QUEST, List.of(ChatColor.of("#DEDEDE") + "It still seems alive..."));
 
     private final int ID;
     private final String name;
@@ -64,15 +78,20 @@ public enum Item {
     public static ItemStack generateItem(Item item, int amount) {
         ItemStack itemStack = item.getItemStack();
         ItemMeta itemMeta = itemStack.getItemMeta();
-        itemMeta.setDisplayName(ChatColor.RESET + "" + net.md_5.bungee.api.ChatColor.of(item.getRarity().getColor()) + item.getName());
+
+        if (item.getRarity() == Rarity.QUEST || item.getRarity() == Rarity.MISC || item.getRarity() == Rarity.UPGRADE) {
+            itemMeta.setDisplayName(item.getName());
+        } else {
+            itemMeta.setDisplayName(ChatColor.RESET + "" + ChatColor.of(item.getRarity().getColor()) + item.getName());
+        }
         Rarity rarity = item.getRarity();
         if (item.getLore() != null) {
             ArrayList<String> lore = new ArrayList<String>(item.getLore());
             lore.add("");
-            lore.add(rarity.getColor() + rarity.getName());
+            lore.add(ChatColor.RESET + "" + ChatColor.of(rarity.getColor()) + rarity.getName());
             itemMeta.setLore(lore);
         } else {
-            List<String> lore = List.of(ChatColor.RESET + "" + net.md_5.bungee.api.ChatColor.of(rarity.getColor()) + rarity.getName());
+            List<String> lore = List.of(ChatColor.RESET + "" + ChatColor.of(rarity.getColor()) + rarity.getName());
             itemMeta.setLore(lore);
         }
         itemStack.setItemMeta(itemMeta);
@@ -82,6 +101,14 @@ public enum Item {
         nbtItem.set(item.getID(), "item_id");
         itemStack = nbtItem.load();
 
+        return itemStack;
+    }
+
+    private static ItemStack makeGlow(ItemStack itemStack) {
+        ItemMeta itemMeta = itemStack.getItemMeta();
+        itemMeta.addEnchant(Enchantment.DURABILITY, 1, true);
+        itemMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        itemStack.setItemMeta(itemMeta);
         return itemStack;
     }
 }
