@@ -13,3 +13,5 @@ commands:
     description: Rank
   pickaxeupgrade:
     description: Pickaxe Upgrade
+  forge:
+    description: Forge

@@ -3,6 +3,7 @@ package me.pjr8.database.playerdata;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import lombok.Data;
+import me.pjr8.forge.objects.ForgeData;
 import me.pjr8.mining.objects.PickaxeData;
 import me.pjr8.rank.GameRank;
 import me.pjr8.rank.ServerRank;
@@ -33,6 +34,11 @@ public class PlayerData {
     private String pickaxeDataSerialized;
 
     private PickaxeData pickaxeData;
+
+    @DatabaseField(columnName = "forge_data", columnDefinition = "TEXT")
+    private String forgeDataSerialized;
+
+    private ForgeData forgeData;
 
     public PlayerData() {
     }

@@ -29,8 +29,6 @@ public class Database {
         ConnectionSource connectionSource = new JdbcConnectionSource(databaseURL);
         playerDao = DaoManager.createDao(connectionSource, PlayerData.class);
         tableSetup(connectionSource);
-        //TableUtils.createTableIfNotExists(connectionSource, PlayerData.class);
-        //String databaseURL = "jdbc:mysql://root:password@localhost/mining_project";;
     }
 
     private void tableSetup(ConnectionSource connectionSource) {

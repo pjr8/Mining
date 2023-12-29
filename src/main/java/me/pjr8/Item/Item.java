@@ -2,6 +2,9 @@ package me.pjr8.Item;
 
 import com.saicone.rtag.RtagItem;
 import lombok.Getter;
+import me.pjr8.Main;
+import me.pjr8.forge.enums.ForgeItem;
+import me.pjr8.mining.enums.PickaxeType;
 import me.pjr8.util.SkullCreator;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Material;
@@ -26,6 +29,14 @@ public enum Item {
     TEST3(7, "Coal", new ItemStack(Material.COAL), Rarity.RARE, null),
     TEST4(8, "Coal", new ItemStack(Material.COAL), Rarity.EXOTIC, null),
     TEST5(9, "Coal", new ItemStack(Material.COAL), Rarity.MYTHIC, null),
+
+    COAL_SWORD(20, "Coal Sword", makeGlow(new ItemStack(Material.STONE_SWORD)), Rarity.EXOTIC, null),
+
+    COAL_HELMET(21, "Coal Sword", makeGlow(new ItemStack(Material.LEATHER_HELMET)), Rarity.EXOTIC, null),
+    COAL_CHESTPLATE(22, "Coal Sword", makeGlow(new ItemStack(Material.LEATHER_CHESTPLATE)), Rarity.EXOTIC, null),
+    COAL_LEGGINGS(23, "Coal Sword", makeGlow(new ItemStack(Material.LEATHER_LEGGINGS)), Rarity.EXOTIC, null),
+    COAL_BOOTS(24, "Coal Sword", makeGlow(new ItemStack(Material.LEATHER_BOOTS)), Rarity.EXOTIC, null),
+
 
     //Items
 
@@ -75,6 +86,29 @@ public enum Item {
         return toReturn;
     }
 
+    public static Item getItemFromItemStack(ItemStack itemStack) {
+        try {
+            RtagItem rtagItem = new RtagItem(itemStack);
+            Integer item_id = rtagItem.getOptional("item_id").asInt();
+            return getItemFromID(item_id);
+        } catch (Exception e) {
+            Main.logger.info("Player had invalid item");
+            return null;
+        }
+    }
+
+    public static Integer getItemIDFromItemStack(ItemStack itemStack) {
+        RtagItem rtagItem = new RtagItem(itemStack);
+        return rtagItem.getOptional("item_id").asInt();
+    }
+
+
+    public ItemStack generate(int amount) {
+        return generateItem(this, amount);
+    }
+
+
+
     public static ItemStack generateItem(Item item, int amount) {
         ItemStack itemStack = item.getItemStack();
         ItemMeta itemMeta = itemStack.getItemMeta();
@@ -94,9 +128,13 @@ public enum Item {
             List<String> lore = List.of(ChatColor.RESET + "" + ChatColor.of(rarity.getColor()) + rarity.getName());
             itemMeta.setLore(lore);
         }
+        itemMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         itemStack.setItemMeta(itemMeta);
-        itemStack.setAmount(amount);
-
+        if (amount > 64) {
+            itemStack.setAmount(64);
+        } else {
+            itemStack.setAmount(amount);
+        }
         RtagItem nbtItem = new RtagItem(itemStack);
         nbtItem.set(item.getID(), "item_id");
         itemStack = nbtItem.load();

@@ -10,6 +10,7 @@ import me.pjr8.database.Database;
 import me.pjr8.database.playerdata.PlayerDao;
 import me.pjr8.database.playerdata.PlayerDataHandler;
 import me.pjr8.forge.Forge;
+import me.pjr8.forge.commands.CommandForge;
 import me.pjr8.mining.Mining;
 import me.pjr8.mining.commands.CommandPickaxeUpgrade;
 import me.pjr8.rank.commands.CommandRank;
@@ -55,7 +56,7 @@ public class Main extends JavaPlugin {
         protocolManager = ProtocolLibrary.getProtocolManager();
         mining = new Mining(playerDataHandler, protocolManager, plugin);
         chat = new Chat(playerDataHandler);
-        forge = new Forge();
+        forge = new Forge(playerDataHandler);
         Bukkit.getServer().getPluginManager().registerEvents(playerDataHandler, plugin);
         Bukkit.getServer().getPluginManager().registerEvents(mining, plugin);
         Bukkit.getServer().getPluginManager().registerEvents(chat, plugin);
@@ -66,7 +67,7 @@ public class Main extends JavaPlugin {
         this.getCommand("test").setExecutor(new CommandTest());
         this.getCommand("rank").setExecutor(new CommandRank());
         this.getCommand("pickaxeupgrade").setExecutor(new CommandPickaxeUpgrade());
-
+        this.getCommand("forge").setExecutor(new CommandForge(forge));
 
         logger.info("has been enabled.");
     }

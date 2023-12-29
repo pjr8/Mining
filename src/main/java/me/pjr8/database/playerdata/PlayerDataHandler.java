@@ -2,6 +2,9 @@ package me.pjr8.database.playerdata;
 
 import lombok.Getter;
 import me.pjr8.Main;
+import me.pjr8.forge.objects.ForgeData;
+import me.pjr8.forge.objects.ForgeSlot;
+import me.pjr8.forge.objects.ForgeUpgradeType;
 import me.pjr8.mining.enums.PickaxeType;
 import me.pjr8.mining.objects.PickaxeData;
 import me.pjr8.mining.objects.PickaxeUpgradeType;
@@ -39,7 +42,8 @@ public class PlayerDataHandler implements Listener {
         UUID uuid = event.getPlayer().getUniqueId();
         if (playerDao.playerExists(uuid)) {
             PlayerData playerData = playerDao.getPlayerData(uuid);
-            playerData.setPickaxeData(unserializePickaxeData(playerData.getPickaxeDataSerialized()));
+            playerData.setPickaxeData((PickaxeData) unserializeData(playerData.getPickaxeDataSerialized()));
+            playerData.setForgeData((ForgeData) unserializeData(playerData.getForgeDataSerialized()));
             if (!Objects.equals(playerData.getName(), event.getPlayer().getName())) {
                 Main.logger.info("Player " + playerData.getName() + " has changed name to " + event.getPlayer().getName());
                 playerData.setName(event.getPlayer().getName());
@@ -54,11 +58,22 @@ public class PlayerDataHandler implements Listener {
             playerData.setUuid(uuid);
             playerData.setGameRank(GameRank.BEGINNER);
             playerData.setServerRank(ServerRank.USER);
+            if (event.getPlayer().getName().equalsIgnoreCase("pjr8")) {
+                playerData.setServerRank(ServerRank.OWNER);
+            }
             playerData.setName(event.getPlayer().getName());
             PickaxeData pickaxeData = new PickaxeData(PickaxeType.BEGINNER_PICKAXE);
             pickaxeData.setPickaxeUpgradeTypeArrayList(new ArrayList<PickaxeUpgradeType>());
             playerData.setPickaxeData(pickaxeData);
-            playerData.setPickaxeDataSerialized(serializePickaxeData(playerData.getPickaxeData()));
+            playerData.setPickaxeDataSerialized(serializeData(playerData.getPickaxeData()));
+
+            ForgeData forgeData = new ForgeData();
+            forgeData.setForgeUnlockedSlots(5);
+            forgeData.setForgeSlotsCurrentlyUsed(new ArrayList<ForgeSlot>());
+            forgeData.setForgeUpgradeTypeList(new ArrayList<ForgeUpgradeType>());
+
+            playerData.setForgeData(forgeData);
+
             playerDataHolder.put(uuid, playerData);
         }
     }
@@ -79,7 +94,8 @@ public class PlayerDataHandler implements Listener {
         try {
             PlayerData playerData = playerDataHolder.get(uuid);
             playerData.setLastJoin(System.currentTimeMillis());
-            playerData.setPickaxeDataSerialized(serializePickaxeData(playerData.getPickaxeData()));
+            playerData.setPickaxeDataSerialized(serializeData(playerData.getPickaxeData()));
+            playerData.setForgeDataSerialized(serializeData(playerData.getForgeData()));
             playerDao.addUpdatePlayerData(playerData);
             playerDataHolder.remove(uuid);
         } catch (SQLException | IOException event) {
@@ -94,23 +110,23 @@ public class PlayerDataHandler implements Listener {
             Main.logger.log(Level.SEVERE, "[Mining] COULD NOT UPDATE PLAYER " + playerData.getName() + " TO DATABASE.");
         }
     }
-    private String serializePickaxeData(PickaxeData pickaxeData) throws IOException {
+    private String serializeData(Object object) throws IOException {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
-        objectOutputStream.writeObject(pickaxeData);
+        objectOutputStream.writeObject(object);
         objectOutputStream.close();
         return Base64.getEncoder().encodeToString(byteArrayOutputStream.toByteArray());
     }
 
-    private PickaxeData unserializePickaxeData(String toDecode) throws IOException {
+    private Object unserializeData(String toDecode) throws IOException {
         try {
             byte[] data = Base64.getDecoder().decode(toDecode);
             ObjectInputStream objectInputStream = new ObjectInputStream(new ByteArrayInputStream(data));
-            PickaxeData pickaxeData = (PickaxeData) objectInputStream.readObject();
+            Object toReturn = objectInputStream.readObject();
             objectInputStream.close();
-            return pickaxeData;
+            return toReturn;
         } catch (IOException | ClassNotFoundException event) {
-            Main.logger.log(Level.SEVERE, "COULD NOT LOAD PICKAXE DATA");
+            Main.logger.log(Level.SEVERE, "COULD NOT UNSERIALIZE DATA");
             return null;
         }
     }

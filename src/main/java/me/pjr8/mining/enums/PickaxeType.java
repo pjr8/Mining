@@ -19,7 +19,7 @@ public enum PickaxeType {
 
     UNKNOWN_PICKAXE(-1, 1, Rarity.PICKAXE, Material.WOODEN_PICKAXE),
     BEGINNER_PICKAXE(1, 2, Rarity.PICKAXE, Material.WOODEN_PICKAXE),
-    TEST_PICKAXE(2, 250, Rarity.PICKAXE, Material.DIAMOND_PICKAXE);
+    COAL_INFUSED_PICKAXE(2, 5, Rarity.PICKAXE, Material.STONE_PICKAXE);
 
     private final int pickaxeID;
     private final int power;
@@ -59,5 +59,10 @@ public enum PickaxeType {
             }
         }
         return toReturn;
+    }
+
+    public static Integer getPickaxeTypeIDFromItemStack(ItemStack itemStack) {
+        RtagItem rtagItem = new RtagItem(itemStack);
+        return rtagItem.getOptional("pickaxe_id").asInt();
     }
 }
