@@ -1,6 +1,5 @@
 package me.pjr8.forge.gui;
 
-import lombok.Builder;
 import lombok.Data;
 import me.pjr8.Item.Item;
 import me.pjr8.Main;
@@ -13,7 +12,6 @@ import me.pjr8.forge.objects.ForgeSlot;
 import me.pjr8.mining.enums.PickaxeType;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
-import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -30,7 +28,8 @@ import java.util.Map;
 public class ForgeMenu {
     private final Player player;
     private final PlayerData playerData;
-    private final List<Integer> FORGE_SLOT_MAIN_MENU = List.of(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 16, 17, 18, 26, 27, 35, 36, 37, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53);
+    private final List<Integer> FORGE_SLOT_MAIN_MENU = List.of(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 16, 17, 18,
+            26, 27, 35, 36, 37, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53);
     private final List<Integer> FORGE_CONFIRM_DENY = List.of(27, 28, 29, 36, 37, 38, 45, 46, 47);
     private final List<Integer> FORGE_CONFIRM_ACCEPT = List.of(33, 34, 35, 42, 43, 44, 51, 52, 53);
 
@@ -40,7 +39,6 @@ public class ForgeMenu {
     private ForgeMenuType beforeConfirmType;
     private ForgeItem forgeItem;
     private Boolean canCraftItem = false;
-
 
     public ForgeMenu(Player player, ForgeMenuType forgeMenuType, int page) {
         this.player = player;

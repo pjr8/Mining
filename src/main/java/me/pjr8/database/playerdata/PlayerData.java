@@ -40,6 +40,11 @@ public class PlayerData {
 
     private ForgeData forgeData;
 
+    @DatabaseField(columnName = "player_stats", columnDefinition = "TEXT")
+    private String playerStatsSerialized;
+
+    private PlayerStats playerStats;
+
     public PlayerData() {
     }
 

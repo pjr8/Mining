@@ -15,3 +15,7 @@ commands:
     description: Pickaxe Upgrade
   forge:
     description: Forge
+  mob:
+    description: Mob
+  spawner:
+    description: Spawner

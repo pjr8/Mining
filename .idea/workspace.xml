@@ -4,24 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a2c0464-f436-462c-b123-db82e0f8f55b" name="Changes" comment="EOD 12/16/23 Added ranks for server &amp; game progression, fleshed out rank command with support for offline players, chat support for game ranks, pickaxe upgrades, pickaxe upgrade command for testing, database for dev server, new rarity for items to support quests &amp; misc &amp; colored displayname items, drop table for all mine able ores for ease of access,">
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/forge/commands/CommandForge.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/forge/enums/ForgeItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/forge/enums/ForgeMenuType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/forge/gui/ForgeMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/forge/objects/ForgeData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/forge/objects/ForgeItemComponent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/forge/objects/ForgeItemRequirement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/forge/objects/ForgeSlot.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/forge/objects/ForgeUpgradeType.java" afterDir="false" />
+    <list default="true" id="1a2c0464-f436-462c-b123-db82e0f8f55b" name="Changes" comment="Added forge system">
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/database/playerdata/PlayerStats.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/MobDropTable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/MobHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/commands/CommandMob.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/commands/CommandSpawner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/mobs/PandaEnemy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/mobs/SpiderEnemy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/objects/IMob.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/objects/MobStats.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/objects/MobType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/objects/SpawnerData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/skill/Skill.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/skill/SkillType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/skill/commands/CommandSkill.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/Item/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/Item/Item.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/database/Database.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/database/playerdata/PlayerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/database/playerdata/PlayerData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/database/playerdata/PlayerDataHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/database/playerdata/PlayerDataHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/forge/Forge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/forge/Forge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/enums/PickaxeType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/enums/PickaxeType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/forge/gui/ForgeMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/forge/gui/ForgeMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/Mining.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/Mining.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/rank/commands/CommandRank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/rank/commands/CommandRank.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,7 +35,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="118793" />
+    <option name="totalTimeSeconds" value="181293" />
     <option name="idleThresholdMs" value="300000" />
     <option name="gitIntegration" value="true" />
     <option name="naggedAbout" value="1" />
@@ -38,6 +43,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -140,7 +147,21 @@
       <workItem from="1703209862595" duration="4703000" />
       <workItem from="1703219895603" duration="657000" />
       <workItem from="1703486331868" duration="3213000" />
-      <workItem from="1703817431347" duration="5142000" />
+      <workItem from="1703817431347" duration="14780000" />
+      <workItem from="1704381125752" duration="28000" />
+      <workItem from="1706999862267" duration="26000" />
+      <workItem from="1710111875913" duration="707000" />
+      <workItem from="1710142736449" duration="17000" />
+      <workItem from="1710192832281" duration="599000" />
+      <workItem from="1710249928070" duration="11000" />
+      <workItem from="1710283666127" duration="6372000" />
+      <workItem from="1710335549704" duration="22669000" />
+      <workItem from="1710422091341" duration="9987000" />
+      <workItem from="1710455057384" duration="7966000" />
+      <workItem from="1710551638065" duration="24000" />
+      <workItem from="1710962379015" duration="944000" />
+      <workItem from="1711140604244" duration="21536000" />
+      <workItem from="1711226302451" duration="639000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <option name="closed" value="true" />
@@ -166,7 +187,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702799862857</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added forge system">
+      <option name="closed" value="true" />
+      <created>1703822681685</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1703822681685</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,6 +211,7 @@
     <MESSAGE value="First commit" />
     <MESSAGE value="Added nbt on items for id system, custom mining power, start of custom pickaxes and serialization for the database of the pickaxe data &amp; handling." />
     <MESSAGE value="EOD 12/16/23 Added ranks for server &amp; game progression, fleshed out rank command with support for offline players, chat support for game ranks, pickaxe upgrades, pickaxe upgrade command for testing, database for dev server, new rarity for items to support quests &amp; misc &amp; colored displayname items, drop table for all mine able ores for ease of access," />
-    <option name="LAST_COMMIT_MESSAGE" value="EOD 12/16/23 Added ranks for server &amp; game progression, fleshed out rank command with support for offline players, chat support for game ranks, pickaxe upgrades, pickaxe upgrade command for testing, database for dev server, new rarity for items to support quests &amp; misc &amp; colored displayname items, drop table for all mine able ores for ease of access," />
+    <MESSAGE value="Added forge system" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added forge system" />
   </component>
 </project>

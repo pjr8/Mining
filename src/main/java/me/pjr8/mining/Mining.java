@@ -14,17 +14,17 @@ import com.comphenix.protocol.wrappers.EnumWrappers;
 import com.comphenix.protocol.wrappers.WrappedBlockData;
 import me.pjr8.Main;
 import me.pjr8.chat.Chat;
-import me.pjr8.database.playerdata.PlayerData;
 import me.pjr8.database.playerdata.PlayerDataHandler;
 import me.pjr8.mining.enums.OreType;
-import me.pjr8.mining.objects.*;
-import me.pjr8.rank.ServerRank;
+import me.pjr8.mining.objects.BlockHolder;
+import me.pjr8.mining.objects.BlockRespawn;
+import me.pjr8.mining.objects.MiningPlayer;
+import me.pjr8.mining.objects.OreDropTable;
 import me.pjr8.update.UpdateEvent;
 import me.pjr8.update.UpdateType;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
-import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -40,23 +40,22 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
-import java.awt.Color;
 
 public class Mining implements Listener {
 
     private final PlayerDataHandler playerDataHandler;
     private final ProtocolManager protocolManager;
     private final JavaPlugin plugin;
-    private final HashMap<Player, MiningPlayer> miningPlayers = new HashMap<Player, MiningPlayer>();
-    private final HashMap<Player, Location> miningPlayerCurrentBlock = new HashMap<Player, Location>();
-    private final HashMap<Player, ArrayList<BlockRespawn>> playerBlockRespawn = new HashMap<Player, ArrayList<BlockRespawn>>();
+    private final HashMap<Player, MiningPlayer> miningPlayers = new HashMap<>();
+    private final HashMap<Player, Location> miningPlayerCurrentBlock = new HashMap<>();
+    private final HashMap<Player, ArrayList<BlockRespawn>> playerBlockRespawn = new HashMap<>();
 
     public Mining(PlayerDataHandler playerDataHandler, ProtocolManager protocolManager, JavaPlugin plugin) {
         this.playerDataHandler = playerDataHandler;
@@ -246,7 +245,8 @@ public class Mining implements Listener {
             item.setVelocity(new Vector(0f, 0.25f, 0f));
             item.setOwner(player.getUniqueId());
             item.setVisibleByDefault(false);
-            player.showEntity(plugin, item);;
+            player.showEntity(plugin, item);
+            ;
         }
     }
 }

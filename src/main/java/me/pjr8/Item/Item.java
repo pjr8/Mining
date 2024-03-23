@@ -40,27 +40,36 @@ public enum Item {
 
     //Items
 
-    COAL(1000, "Coal", new ItemStack(Material.COAL), Rarity.ABUNDANT, null),
+    COAL(1_000, "Coal", new ItemStack(Material.COAL), Rarity.ABUNDANT, null),
 
-    CHARGED_COAL(1001, "Charged Coal", makeGlow(new ItemStack(Material.COAL)), Rarity.UNCOMMON, List.of(ChatColor.of("#DEDEDE") + "It emits a bright light...")),
+    CHARGED_COAL(1_001, "Charged Coal", makeGlow(new ItemStack(Material.COAL)), Rarity.UNCOMMON, List.of(ChatColor.of("#DEDEDE") + "It emits a bright light...")),
 
-    COAL_HEAD(1005, "Coal Head", SkullCreator.itemFromBase64("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTY3YjQ3ZmJkMzdjNmQ5ZDhkMjJkOTczZTcyOTBlODA4NTJlOTI2NmEwNzZmYjdhYjIxNWFmZTkxYjgxZWQ2YyJ9fX0="), Rarity.MYTHIC, null),
+    COAL_HEAD(1_005, "Coal Head", SkullCreator.itemFromBase64("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTY3YjQ3ZmJkMzdjNmQ5ZDhkMjJkOTczZTcyOTBlODA4NTJlOTI2NmEwNzZmYjdhYjIxNWFmZTkxYjgxZWQ2YyJ9fX0="), Rarity.MYTHIC, null),
 
-    RAW_IRON(1050, "Raw Iron", new ItemStack(Material.RAW_IRON), Rarity.ABUNDANT, null),
+    RAW_IRON(1_050, "Raw Iron", new ItemStack(Material.RAW_IRON), Rarity.ABUNDANT, null),
 
-    IRON_HEAD(1051, "Iron Gem", SkullCreator.itemFromBase64("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzFhNzg1OTE2ZDJkMTdjYTBlYTJhZDIzZDgwMjQ3YzdjNTAyMTQ0MzkwM2JiYWI3YjI0Yjc5MzRiNmEzNjFhYiJ9fX0="), Rarity.ABUNDANT, null),
+    IRON_HEAD(1_051, "Iron Gem", SkullCreator.itemFromBase64("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzFhNzg1OTE2ZDJkMTdjYTBlYTJhZDIzZDgwMjQ3YzdjNTAyMTQ0MzkwM2JiYWI3YjI0Yjc5MzRiNmEzNjFhYiJ9fX0="), Rarity.ABUNDANT, null),
+
+    //Mob Drops
+
+    BAMBOO(5_000, "Bamboo", new ItemStack(Material.BAMBOO), Rarity.ABUNDANT, null),
+    STRING(5_001, "String", new ItemStack(Material.STRING), Rarity.ABUNDANT, null),
+
+
+
+
 
     //Upgrade Items
 
-    ENERGY_INFUSED_ORB(5000, ChatColor.of("#ff9c2b") + "Energy-Infused Orb", makeGlow(new ItemStack(Material.FIRE_CHARGE)), Rarity.UPGRADE, List.of(ChatColor.of("#DEDEDE") + "It seems to give power...")),
+    ENERGY_INFUSED_ORB(10_000, ChatColor.of("#ff9c2b") + "Energy-Infused Orb", makeGlow(new ItemStack(Material.FIRE_CHARGE)), Rarity.UPGRADE, List.of(ChatColor.of("#DEDEDE") + "It seems to give power...")),
 
-    SHARP_COAL_SHARD(5001, ChatColor.of("#828282") + "Sharp Coal Shard", makeGlow(new ItemStack(Material.FLINT)), Rarity.UPGRADE, List.of(ChatColor.of("#DEDEDE") + "Maybe it could be used to sharpen something...")),
+    SHARP_COAL_SHARD(10_002, ChatColor.of("#828282") + "Sharp Coal Shard", makeGlow(new ItemStack(Material.FLINT)), Rarity.UPGRADE, List.of(ChatColor.of("#DEDEDE") + "Maybe it could be used to sharpen something...")),
 
 
     //Task-related items
 
-    CORRUPTED_SHARD_MYSTSPORE(10001, ChatColor.DARK_RED + "" + ChatColor.MAGIC + "|" + ChatColor.RESET + ChatColor.DARK_RED + "Corr" + ChatColor.MAGIC + "|" + ChatColor.RESET + ChatColor.DARK_RED + "upted Sha" + ChatColor.MAGIC + "|" + ChatColor.RESET + ChatColor.DARK_RED + "rd" + ChatColor.MAGIC + "|", makeGlow(new ItemStack(Material.ECHO_SHARD)), Rarity.QUEST, List.of(ChatColor.of("#DEDEDE") + "It omits mysterious energy...")),
-    CURSED_REMAINS_MYSTSPORE(10002, ChatColor.RESET + "" + ChatColor.of("#ff3d3d") + "Cursed Remains", makeGlow(new ItemStack(Material.BROWN_DYE)), Rarity.QUEST, List.of(ChatColor.of("#DEDEDE") + "It still seems alive..."));
+    CORRUPTED_SHARD_MYSTSPORE(20_000, ChatColor.DARK_RED + "" + ChatColor.MAGIC + "|" + ChatColor.RESET + ChatColor.DARK_RED + "Corr" + ChatColor.MAGIC + "|" + ChatColor.RESET + ChatColor.DARK_RED + "upted Sha" + ChatColor.MAGIC + "|" + ChatColor.RESET + ChatColor.DARK_RED + "rd" + ChatColor.MAGIC + "|", makeGlow(new ItemStack(Material.ECHO_SHARD)), Rarity.QUEST, List.of(ChatColor.of("#DEDEDE") + "It omits mysterious energy...")),
+    CURSED_REMAINS_MYSTSPORE(20_001, ChatColor.RESET + "" + ChatColor.of("#ff3d3d") + "Cursed Remains", makeGlow(new ItemStack(Material.BROWN_DYE)), Rarity.QUEST, List.of(ChatColor.of("#DEDEDE") + "It still seems alive..."));
 
     private final int ID;
     private final String name;

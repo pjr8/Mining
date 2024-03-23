@@ -13,6 +13,9 @@ import me.pjr8.forge.Forge;
 import me.pjr8.forge.commands.CommandForge;
 import me.pjr8.mining.Mining;
 import me.pjr8.mining.commands.CommandPickaxeUpgrade;
+import me.pjr8.mob.MobHandler;
+import me.pjr8.mob.commands.CommandMob;
+import me.pjr8.mob.commands.CommandSpawner;
 import me.pjr8.rank.commands.CommandRank;
 import me.pjr8.update.UpdateService;
 import org.bukkit.Bukkit;
@@ -21,6 +24,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -35,12 +39,21 @@ public class Main extends JavaPlugin {
     public static Forge forge;
     public static ProtocolManager protocolManager;
     public static UpdateService updateService;
-
-
-    public static ArrayList<Player> adminMode = new ArrayList<Player>();
-
+    public static MobHandler mobHandler;
+    public static HashSet<Player> adminMode = new HashSet<Player>();
 
     public void onEnable() {
+        registerClasses();
+        registerEvents();
+        registerCommands();
+        logger.info("has been enabled.");
+    }
+
+    public void onDisable() {
+        shutdown();
+    }
+
+    public void registerClasses() {
         plugin = this;
         logger = plugin.getLogger();
         try {
@@ -57,22 +70,30 @@ public class Main extends JavaPlugin {
         mining = new Mining(playerDataHandler, protocolManager, plugin);
         chat = new Chat(playerDataHandler);
         forge = new Forge(playerDataHandler);
-        Bukkit.getServer().getPluginManager().registerEvents(playerDataHandler, plugin);
-        Bukkit.getServer().getPluginManager().registerEvents(mining, plugin);
-        Bukkit.getServer().getPluginManager().registerEvents(chat, plugin);
-        Bukkit.getServer().getPluginManager().registerEvents(forge, plugin);
-
-        this.getCommand("item").setExecutor(new CommandItem());
-        this.getCommand("admin").setExecutor(new CommandAdmin());
-        this.getCommand("test").setExecutor(new CommandTest());
-        this.getCommand("rank").setExecutor(new CommandRank());
-        this.getCommand("pickaxeupgrade").setExecutor(new CommandPickaxeUpgrade());
-        this.getCommand("forge").setExecutor(new CommandForge(forge));
-
-        logger.info("has been enabled.");
+        mobHandler = new MobHandler();
     }
 
-    public void onDisable() {
+    public void registerEvents() {
+        getServer().getPluginManager().registerEvents(playerDataHandler, plugin);
+        getServer().getPluginManager().registerEvents(mining, plugin);
+        getServer().getPluginManager().registerEvents(chat, plugin);
+        getServer().getPluginManager().registerEvents(forge, plugin);
+        getServer().getPluginManager().registerEvents(mobHandler, plugin);
+    }
+
+    public void registerCommands() {
+        getCommand("item").setExecutor(new CommandItem());
+        getCommand("admin").setExecutor(new CommandAdmin());
+        getCommand("test").setExecutor(new CommandTest());
+        getCommand("rank").setExecutor(new CommandRank());
+        getCommand("pickaxeupgrade").setExecutor(new CommandPickaxeUpgrade());
+        getCommand("forge").setExecutor(new CommandForge(forge));
+        getCommand("mob").setExecutor(new CommandMob(mobHandler));
+        getCommand("spawner").setExecutor(new CommandSpawner());
+    }
+
+    public void shutdown() {
+        mobHandler.shutdown();
         try {
             playerDataHandler.shutdown();
         } catch (SQLException e) {
@@ -81,5 +102,4 @@ public class Main extends JavaPlugin {
         logger.info("has been disabled.");
         updateService.stop();
     }
-
 }
