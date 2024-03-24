@@ -11,19 +11,26 @@ public class PlayerStats {
 
     private UUID uuid;
 
-    private double maxHealth;
+    private double maxHealth = 100;
 
-    private double health;
+    private double health = 100;
 
-    private int miningExperience;
+    private int miningExperience = 0;
 
-    private int forgingExperience;
+    private int forgingExperience = 0;
 
-    private int combatExperience;
+    private int combatExperience = 0;
 
-    private HashMap<String, Integer> mobInfo;
+    private HashMap<String, Integer> mobStats = new HashMap<>();
 
     //TODO Add a list of a new object (maybe PlayerEntityInfo?) based on the player's stats regarding a specific mob, like kills and deaths to the mob.
+
+    public PlayerStats() {
+    }
+
+    public PlayerStats(UUID uuid) {
+        this.uuid = uuid;
+    }
 
     public void addExperience(SkillType skillType, int experience) {
         switch (skillType) {
@@ -33,11 +40,11 @@ public class PlayerStats {
         }
     }
 
-    public void addMobInfoData(String key, int amount) {
-        if (mobInfo.containsKey(key)) {
-            mobInfo.put(key, mobInfo.get(key) + amount);
+    public void addMobStatsData(String key, int amount) {
+        if (mobStats.containsKey(key)) {
+            mobStats.put(key, mobStats.get(key) + amount);
         } else {
-            mobInfo.put(key, amount);
+            mobStats.put(key, amount);
         }
     }
 }

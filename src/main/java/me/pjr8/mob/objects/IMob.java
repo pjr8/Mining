@@ -63,8 +63,8 @@ public interface IMob {
     default void onDeath(Player lastHitPlayer) {
         lastHitPlayer.sendMessage("You have killed a " + getName() + "!");
         getDamageDealt().forEach((player, damage) -> {
-/*            Main.playerDataHandler.getPlayerDataHolder().get(player.getUniqueId()).getPlayerStats().
-                    addMobInfoData(getName().toLowerCase() + "_kills", 1);*/
+            Main.playerDataHandler.getPlayerDataHolder().get(player.getUniqueId()).getPlayerStats().
+                    addMobStatsData(getName().toLowerCase() + "_kills", 1);
             player.sendMessage("You dealt " + damage + " damage to the " + getName() + "!");
             MobDropTable.getDrops(this).forEach((item, amount) -> {
                 player.getInventory().addItem(new ItemStack(Item.generateItem(item, amount)));

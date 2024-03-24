@@ -5,29 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a2c0464-f436-462c-b123-db82e0f8f55b" name="Changes" comment="Added forge system">
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/database/playerdata/PlayerStats.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/MobDropTable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/MobHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/commands/CommandMob.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/commands/CommandSpawner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/mobs/PandaEnemy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/mobs/SpiderEnemy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/objects/IMob.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/objects/MobStats.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/objects/MobType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/objects/SpawnerData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/skill/Skill.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/skill/SkillType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/skill/commands/CommandSkill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/Item/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/Item/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/database/playerdata/PlayerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/database/playerdata/PlayerData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/database/playerdata/PlayerDataHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/database/playerdata/PlayerDataHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/forge/gui/ForgeMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/forge/gui/ForgeMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/Mining.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/Mining.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/rank/commands/CommandRank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/rank/commands/CommandRank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/database/playerdata/PlayerStats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/database/playerdata/PlayerStats.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/forge/objects/ForgeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/forge/objects/ForgeData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/objects/PickaxeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/objects/PickaxeData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/objects/IMob.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/objects/IMob.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/skill/commands/CommandSkill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/skill/commands/CommandSkill.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,6 +147,7 @@
       <workItem from="1710962379015" duration="944000" />
       <workItem from="1711140604244" duration="21536000" />
       <workItem from="1711226302451" duration="639000" />
+      <workItem from="1711228471558" duration="4507000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <option name="closed" value="true" />

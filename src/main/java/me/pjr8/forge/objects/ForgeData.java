@@ -8,9 +8,9 @@ import java.util.ArrayList;
 @Data
 public class ForgeData implements Serializable {
 
-    private int forgeUnlockedSlots;
-    private ArrayList<ForgeSlot> forgeSlotsCurrentlyUsed;
-    private ArrayList<ForgeUpgradeType> forgeUpgradeTypeList;
+    private int forgeUnlockedSlots = 5;
+    private ArrayList<ForgeSlot> forgeSlotsCurrentlyUsed = new ArrayList<>();
+    private ArrayList<ForgeUpgradeType> forgeUpgradeTypeList = new ArrayList<>();
 
     public void calculateForgeSlots() {
         this.forgeUnlockedSlots = 5;

@@ -9,12 +9,8 @@ import java.util.ArrayList;
 @Data
 public class PickaxeData implements Serializable {
 
-    private PickaxeType pickaxeType;
-    private ArrayList<PickaxeUpgradeType> pickaxeUpgradeTypeArrayList;
-
-    public PickaxeData(PickaxeType pickaxeType) {
-        this.pickaxeType = pickaxeType;
-    }
+    private PickaxeType pickaxeType = PickaxeType.BEGINNER_PICKAXE;
+    private ArrayList<PickaxeUpgradeType> pickaxeUpgradeTypeArrayList = new ArrayList<>();
 
     public int calculatePickaxePower() {
         double power = pickaxeType.getPower();

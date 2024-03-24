@@ -43,6 +43,7 @@ public class PlayerDataHandler implements Listener {
             PlayerData playerData = playerDao.getPlayerData(uuid);
             playerData.setPickaxeData((PickaxeData) unserializeData(playerData.getPickaxeDataSerialized()));
             playerData.setForgeData((ForgeData) unserializeData(playerData.getForgeDataSerialized()));
+            playerData.setPlayerStats((PlayerStats) unserializeData(playerData.getPlayerStatsSerialized()));
             if (!Objects.equals(playerData.getName(), event.getPlayer().getName())) {
                 Main.logger.info("Player " + playerData.getName() + " has changed name to " + event.getPlayer().getName());
                 playerData.setName(event.getPlayer().getName());
@@ -54,24 +55,17 @@ public class PlayerDataHandler implements Listener {
             }
         } else {
             PlayerData playerData = new PlayerData();
+            playerData.setName(event.getPlayer().getName());
             playerData.setUuid(uuid);
             playerData.setGameRank(GameRank.BEGINNER);
             playerData.setServerRank(ServerRank.USER);
             if (event.getPlayer().getName().equalsIgnoreCase("pjr8")) {
                 playerData.setServerRank(ServerRank.OWNER);
             }
-            playerData.setName(event.getPlayer().getName());
-            PickaxeData pickaxeData = new PickaxeData(PickaxeType.BEGINNER_PICKAXE);
-            pickaxeData.setPickaxeUpgradeTypeArrayList(new ArrayList<PickaxeUpgradeType>());
-            playerData.setPickaxeData(pickaxeData);
+            playerData.setPickaxeData(new PickaxeData());
             playerData.setPickaxeDataSerialized(serializeData(playerData.getPickaxeData()));
-
-            ForgeData forgeData = new ForgeData();
-            forgeData.setForgeUnlockedSlots(5);
-            forgeData.setForgeSlotsCurrentlyUsed(new ArrayList<ForgeSlot>());
-            forgeData.setForgeUpgradeTypeList(new ArrayList<ForgeUpgradeType>());
-
-            playerData.setForgeData(forgeData);
+            playerData.setForgeData(new ForgeData());
+            playerData.setPlayerStats(new PlayerStats(uuid));
 
             playerDataHolder.put(uuid, playerData);
         }
