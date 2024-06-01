@@ -1,8 +1,8 @@
 package me.pjr8.mob;
 
 import me.pjr8.Item.Item;
-import me.pjr8.mob.mobs.PandaEnemy;
-import me.pjr8.mob.mobs.SpiderEnemy;
+import me.pjr8.mob.mobs.EnemyPanda;
+import me.pjr8.mob.mobs.EnemySpider;
 import me.pjr8.mob.objects.IMob;
 
 import java.util.HashMap;
@@ -30,11 +30,11 @@ public class MobDropTable {
     }
 
     private static Map<Item, Double[]> getMobDropTable(IMob iMob) {
-        if (iMob instanceof PandaEnemy) {
+        if (iMob instanceof EnemyPanda) {
             return new HashMap<>() {{
                 put(Item.BAMBOO, new Double[] {0.5, 1.0, 3.0});
             }};
-        } else if (iMob instanceof SpiderEnemy) {
+        } else if (iMob instanceof EnemySpider) {
             return new HashMap<>() {{
                 put(Item.STRING, new Double[] {0.5, 1.0, 3.0});
             }};

@@ -1,7 +1,7 @@
 package me.pjr8.rank.commands;
 
 import me.pjr8.Main;
-import me.pjr8.database.playerdata.PlayerData;
+import me.pjr8.database.PlayerData;
 import me.pjr8.rank.GameRank;
 import me.pjr8.rank.ServerRank;
 import org.bukkit.Bukkit;
@@ -84,7 +84,7 @@ public class CommandRank implements CommandExecutor {
                 } else {
                     try {
                         OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(args[2]);
-                        PlayerData playerData = Main.playerDao.getPlayerData(offlinePlayer.getUniqueId());
+                        PlayerData playerData = Main.playerDataHandler.getPlayerData(offlinePlayer.getUniqueId());
                         playerData.setGameRank(gameRank);
                         Main.playerDataHandler.updateOfflinePlayer(playerData);
                         sender.sendMessage(args[2] + " has been set to the rank " + gameRank.toString());
@@ -107,7 +107,7 @@ public class CommandRank implements CommandExecutor {
                 } else {
                     try {
                         OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(args[2]);
-                        PlayerData playerData = Main.playerDao.getPlayerData(offlinePlayer.getUniqueId());
+                        PlayerData playerData = Main.playerDataHandler.getPlayerData(offlinePlayer.getUniqueId());
                         playerData.setServerRank(serverRank);
                         Main.playerDataHandler.updateOfflinePlayer(playerData);
                         sender.sendMessage(args[2] + " has been set to the rank " + serverRank.toString());

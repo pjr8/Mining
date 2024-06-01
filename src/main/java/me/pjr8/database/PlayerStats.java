@@ -1,13 +1,14 @@
-package me.pjr8.database.playerdata;
+package me.pjr8.database;
 
 import lombok.Data;
 import me.pjr8.skill.SkillType;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.UUID;
 
 @Data
-public class PlayerStats {
+public class PlayerStats implements Serializable {
 
     private UUID uuid;
 
@@ -24,9 +25,6 @@ public class PlayerStats {
     private HashMap<String, Integer> mobStats = new HashMap<>();
 
     //TODO Add a list of a new object (maybe PlayerEntityInfo?) based on the player's stats regarding a specific mob, like kills and deaths to the mob.
-
-    public PlayerStats() {
-    }
 
     public PlayerStats(UUID uuid) {
         this.uuid = uuid;

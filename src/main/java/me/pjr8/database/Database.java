@@ -1,41 +1,32 @@
 package me.pjr8.database;
 
-import com.j256.ormlite.dao.Dao;
-import com.j256.ormlite.dao.DaoManager;
-import com.j256.ormlite.jdbc.JdbcConnectionSource;
-import com.j256.ormlite.support.ConnectionSource;
-import com.j256.ormlite.table.TableUtils;
-import lombok.Getter;
+import com.mongodb.ConnectionString;
+import com.mongodb.MongoClientSettings;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
 import me.pjr8.Main;
-import me.pjr8.database.playerdata.PlayerData;
+import org.bson.UuidRepresentation;
 import org.bukkit.Bukkit;
 
-import java.sql.SQLException;
-import java.util.UUID;
 
-@Getter
 public class Database {
 
-    private final Dao<PlayerData, UUID> playerDao;
+    public final MongoClient mongoClient;
+    private static final String databaseURL = "mongodb://localhost:27017";
+    public static String databaseName;
 
-    public Database() throws SQLException {
-        String databaseURL = "jdbc:mysql://root:password@localhost/";
+    public Database() {
         if (Bukkit.getServer().getMotd().contains("dev")) {
-            databaseURL += "mining_project_dev";
-            Main.logger.info("Using dev mysql!");
+            databaseName = "mining_project_dev";
+            Main.logger.info("Using dev mongodb collection!");
         } else {
-            databaseURL += "mining_project";
+            databaseName = "mining_project";
         }
-        ConnectionSource connectionSource = new JdbcConnectionSource(databaseURL);
-        playerDao = DaoManager.createDao(connectionSource, PlayerData.class);
-        tableSetup(connectionSource);
-    }
-
-    private void tableSetup(ConnectionSource connectionSource) {
-        try {
-            TableUtils.createTableIfNotExists(connectionSource, PlayerData.class);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        //mongoClient = MongoClients.create(databaseURL);
+        MongoClientSettings settings = MongoClientSettings.builder()
+                .uuidRepresentation(UuidRepresentation.STANDARD)
+                .applyConnectionString(new ConnectionString(databaseURL))
+                .build();
+        mongoClient = MongoClients.create(settings);
     }
 }

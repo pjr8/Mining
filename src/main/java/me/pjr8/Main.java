@@ -7,8 +7,7 @@ import me.pjr8.chat.Chat;
 import me.pjr8.commands.CommandAdmin;
 import me.pjr8.commands.CommandTest;
 import me.pjr8.database.Database;
-import me.pjr8.database.playerdata.PlayerDao;
-import me.pjr8.database.playerdata.PlayerDataHandler;
+import me.pjr8.database.PlayerDataHandler;
 import me.pjr8.forge.Forge;
 import me.pjr8.forge.commands.CommandForge;
 import me.pjr8.mining.Mining;
@@ -23,7 +22,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,7 +30,6 @@ public class Main extends JavaPlugin {
     public static JavaPlugin plugin;
     public static Logger logger;
     public static Database database;
-    public static PlayerDao playerDao;
     public static PlayerDataHandler playerDataHandler;
     public static Mining mining;
     public static Chat chat;
@@ -56,16 +53,10 @@ public class Main extends JavaPlugin {
     public void registerClasses() {
         plugin = this;
         logger = plugin.getLogger();
-        try {
-            database = new Database();
-            playerDao = new PlayerDao(database.getPlayerDao());
-        } catch (SQLException e) {
-            logger.log(Level.SEVERE, "COULD NOT CONNECT TO DATABASE.");
-            Bukkit.getServer().shutdown();
-        }
+        database = new Database();
         updateService = new UpdateService(this);
         updateService.start();
-        playerDataHandler = new PlayerDataHandler(playerDao);
+        playerDataHandler = new PlayerDataHandler(database);
         protocolManager = ProtocolLibrary.getProtocolManager();
         mining = new Mining(playerDataHandler, protocolManager, plugin);
         chat = new Chat(playerDataHandler);

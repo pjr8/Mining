@@ -1,21 +1,14 @@
 package me.pjr8.forge.commands;
 
-import me.pjr8.Item.Item;
 import me.pjr8.Main;
-import me.pjr8.database.playerdata.PlayerData;
+import me.pjr8.database.PlayerData;
 import me.pjr8.forge.Forge;
-import me.pjr8.forge.enums.ForgeItem;
 import me.pjr8.forge.enums.ForgeMenuType;
 import me.pjr8.forge.gui.ForgeMenu;
-import me.pjr8.forge.objects.ForgeData;
-import me.pjr8.forge.objects.ForgeSlot;
-import me.pjr8.forge.objects.ForgeUpgradeType;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-
-import java.util.ArrayList;
 
 public class CommandForge implements CommandExecutor {
 
