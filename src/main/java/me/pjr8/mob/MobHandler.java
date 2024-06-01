@@ -1,7 +1,7 @@
 package me.pjr8.mob;
 
-import me.pjr8.mob.mobs.PandaEnemy;
-import me.pjr8.mob.mobs.SpiderEnemy;
+import me.pjr8.mob.mobs.EnemyPanda;
+import me.pjr8.mob.mobs.EnemySpider;
 import me.pjr8.mob.objects.IMob;
 import me.pjr8.mob.objects.MobType;
 import me.pjr8.mob.objects.SpawnerData;
@@ -25,7 +25,7 @@ public class MobHandler implements Listener {
 
     public final HashSet<SpawnerData> spawners = new HashSet<>();
 
-     public int MOB_REMOVE_DISTANCE = 25;
+    public int MOB_REMOVE_DISTANCE = 25;
 
     @EventHandler
     public void doSpawner(UpdateEvent event) {
@@ -126,8 +126,8 @@ public class MobHandler implements Listener {
 
     private IMob getMobByType(MobType mobType) {
         return switch (mobType) {
-            case PANDA -> new PandaEnemy();
-            case SPIDER -> new SpiderEnemy();
+            case PANDA -> new EnemyPanda();
+            case SPIDER -> new EnemySpider();
         };
     }
 }

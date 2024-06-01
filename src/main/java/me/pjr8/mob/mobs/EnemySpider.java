@@ -4,9 +4,9 @@ import me.pjr8.mob.objects.IMob;
 import me.pjr8.mob.objects.MobStats;
 import org.bukkit.entity.*;
 
-public class SpiderEnemy extends MobStats implements IMob {
+public class EnemySpider extends MobStats implements IMob {
 
-    public SpiderEnemy() {
+    public EnemySpider() {
         entityType = Spider.class;
         maxHealth = 20;
         currentHealth = maxHealth;

@@ -1,18 +1,12 @@
 package me.pjr8.commands;
 
 import me.pjr8.Main;
-import me.pjr8.database.playerdata.PlayerData;
+import me.pjr8.database.PlayerData;
 import me.pjr8.mining.objects.PickaxeUpgradeType;
-import net.md_5.bungee.api.ChatColor;
-import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
-
-import java.awt.*;
 
 public class CommandTest implements CommandExecutor {
     @Override

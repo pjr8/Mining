@@ -1,9 +1,8 @@
 package me.pjr8.forge;
 
 import me.pjr8.Item.Item;
-import me.pjr8.Main;
-import me.pjr8.database.playerdata.PlayerData;
-import me.pjr8.database.playerdata.PlayerDataHandler;
+import me.pjr8.database.PlayerData;
+import me.pjr8.database.PlayerDataHandler;
 import me.pjr8.forge.enums.ForgeItem;
 import me.pjr8.forge.enums.ForgeMenuType;
 import me.pjr8.forge.gui.ForgeMenu;
@@ -19,9 +18,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
-import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.*;
 

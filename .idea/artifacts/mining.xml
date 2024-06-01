@@ -9,6 +9,10 @@
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/saicone/rtag/rtag-item/1.4.4/rtag-item-1.4.4.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/saicone/rtag/rtag/1.4.4/rtag-1.4.4.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/mojang/authlib/1.5.21/authlib-1.5.21.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/mongodb/bson-record-codec/5.1.0/bson-record-codec-5.1.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/mongodb/bson/5.1.0/bson-5.1.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/mongodb/mongodb-driver-core/5.1.0/mongodb-driver-core-5.1.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/mongodb/mongodb-driver-sync/5.1.0/mongodb-driver-sync-5.1.0.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
