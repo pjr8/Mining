@@ -4,31 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a2c0464-f436-462c-b123-db82e0f8f55b" name="Changes" comment="Added forge system">
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/database/PlayerData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/objects/MobData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/mining.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/mining.xml" afterDir="false" />
+    <list default="true" id="1a2c0464-f436-462c-b123-db82e0f8f55b" name="Changes" comment="Changed mob system to be designed better, also forgot to add last commit that I changed the database to mongodb (merged from mongodb branch)">
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/objects/AbstractMob.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/chat/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/chat/Chat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/commands/CommandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/commands/CommandTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/database/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/database/playerdata/PlayerDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/database/playerdata/PlayerData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/database/playerdata/PlayerDataHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/database/PlayerDataHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/database/playerdata/PlayerStats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/database/PlayerStats.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/forge/Forge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/forge/Forge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/forge/commands/CommandForge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/forge/commands/CommandForge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/forge/gui/ForgeMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/forge/gui/ForgeMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/Mining.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/Mining.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/commands/CommandPickaxeUpgrade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mining/commands/CommandPickaxeUpgrade.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/MobDropTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/MobDropTable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/MobHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/MobHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/commands/CommandMob.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/commands/CommandMob.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/mobs/PandaEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/mobs/EnemyPanda.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/mobs/SpiderEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/mobs/EnemySpider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/rank/commands/CommandRank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/rank/commands/CommandRank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/mobs/EnemyPanda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/mobs/EnemyPanda.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/mobs/EnemySpider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/mobs/EnemySpider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/objects/IMob.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/objects/MobData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/pjr8/mob/objects/MobStats.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +22,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="203918" />
+    <option name="totalTimeSeconds" value="206320" />
     <option name="idleThresholdMs" value="300000" />
     <option name="gitIntegration" value="true" />
     <option name="naggedAbout" value="1" />
@@ -99,7 +85,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;mongodb&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/paulr/Desktop/desktop/me alex dimo server/development/libs/DecentHolograms-2.8.5.jar&quot;,
@@ -202,6 +188,7 @@
       <workItem from="1717034202455" duration="101000" />
       <workItem from="1717048055219" duration="16530000" />
       <workItem from="1717185448665" duration="1195000" />
+      <workItem from="1717372864410" duration="2762000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <option name="closed" value="true" />
@@ -263,6 +250,7 @@
     <MESSAGE value="Added nbt on items for id system, custom mining power, start of custom pickaxes and serialization for the database of the pickaxe data &amp; handling." />
     <MESSAGE value="EOD 12/16/23 Added ranks for server &amp; game progression, fleshed out rank command with support for offline players, chat support for game ranks, pickaxe upgrades, pickaxe upgrade command for testing, database for dev server, new rarity for items to support quests &amp; misc &amp; colored displayname items, drop table for all mine able ores for ease of access," />
     <MESSAGE value="Added forge system" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added forge system" />
+    <MESSAGE value="Changed mob system to be designed better, also forgot to add last commit that I changed the database to mongodb (merged from mongodb branch)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed mob system to be designed better, also forgot to add last commit that I changed the database to mongodb (merged from mongodb branch)" />
   </component>
 </project>

@@ -1,5 +1,6 @@
 package me.pjr8.mob.objects;
 
+import lombok.Data;
 import me.pjr8.Item.Item;
 import me.pjr8.Main;
 import me.pjr8.mob.MobDropTable;
@@ -9,43 +10,65 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.Random;
 
-public interface IMob {
+@Data
+public abstract class AbstractMob {
 
-    void onAttack(Player player);
-    void setSpawnLocation(Location location);
-    String getName();
-    void setName(String name);
-    Location getSpawnLocation();
-    void setCurrentHealth(double health);
-    double getCurrentHealth();
-    void setMaxHealth(int health);
-    int getMaxHealth();
-    void setDamage(double damage);
-    double getDamage();
-    void setSpeed(int speed);
-    int getSpeed();
-    HashMap<Player, Double> getDamageDealt();
-    Entity getEntity();
-    void setEntity(Entity entity);
-    Class<? extends Entity> getEntityType();
-    SpawnerData getSpawner();
-    void setSpawner(SpawnerData spawner);
-    default Entity spawn(Location location) {
+    protected Entity entity;
+    protected Class<? extends Entity> entityType;
+    protected SpawnerData spawner;
+    protected Location spawnLocation;
+    protected String name;
+    protected int maxHealth;
+    protected double currentHealth;
+    protected double damage;
+    protected int speed = 100;
+    protected HashMap<Player, Double> damageDealt = new HashMap<>();
+
+/*    abstract void onAttack(Player player);
+    abstract void setSpawnLocation(Location location);
+    abstract String getName();
+    abstract void setName(String name);
+    abstract Location getSpawnLocation();
+    abstract void setCurrentHealth(double health);
+    abstract double getCurrentHealth();
+    abstract void setMaxHealth(int health);
+    abstract int getMaxHealth();
+    abstract void setDamage(double damage);
+    abstract double getDamage();
+    abstract void setSpeed(int speed);
+    abstract int getSpeed();
+    abstract HashMap<Player, Double> getDamageDealt();
+    abstract Entity getEntity();
+    abstract void setEntity(Entity entity);
+    abstract Class<? extends Entity> getEntityType();
+    abstract SpawnerData getSpawner();
+    abstract void setSpawner(SpawnerData spawner);*/
+
+    public AbstractMob(Class<? extends Entity> entityType, int maxHealth, double damage, String name) {
+        this.entityType = entityType;
+        this.maxHealth = maxHealth;
+        this.currentHealth = maxHealth;
+        this.damage = damage;
+        this.name = name;
+    }
+
+    public Entity spawn(Location location) {
         Random rng = new Random();
         setSpawnLocation(location);
         Location randomizedSpawn = new Location(location.getWorld(),
                 location.getX() + rng.nextInt(10) - 5,
                 location.getY() + 1,
                 location.getZ() + rng.nextInt(10) - 5);
-        setEntity(getSpawnLocation().getWorld().spawn(randomizedSpawn, getEntityType()));
+        setEntity(Objects.requireNonNull(getSpawnLocation().getWorld()).spawn(randomizedSpawn, getEntityType()));
         getEntity().setCustomNameVisible(true);
         setCustomName();
         return getEntity();
     }
 
-    default void onDamage(Player player) {
+    public void onDamage(Player player) {
         setCurrentHealth(getCurrentHealth() - 5);
         if (getDamageDealt().containsKey(player)) {
             getDamageDealt().put(player, getDamageDealt().get(player) + 5);
@@ -60,7 +83,7 @@ public interface IMob {
         }
     }
 
-    default void onDeath(Player lastHitPlayer) {
+    public void onDeath(Player lastHitPlayer) {
         lastHitPlayer.sendMessage("You have killed a " + getName() + "!");
         getDamageDealt().forEach((player, damage) -> {
             Main.playerDataHandler.getPlayerDataHolder().get(player.getUniqueId()).getPlayerStats().
@@ -81,7 +104,7 @@ public interface IMob {
         getEntity().remove();
     }
 
-    default void setCustomName() {
+    public void setCustomName() {
         for (Entity passenger : getEntity().getPassengers()) {
             passenger.setCustomName(getName() + " " + getCurrentHealth() + "/" + getMaxHealth() + " HP");
         }

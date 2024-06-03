@@ -22,7 +22,6 @@ public class Database {
         } else {
             databaseName = "mining_project";
         }
-        //mongoClient = MongoClients.create(databaseURL);
         MongoClientSettings settings = MongoClientSettings.builder()
                 .uuidRepresentation(UuidRepresentation.STANDARD)
                 .applyConnectionString(new ConnectionString(databaseURL))

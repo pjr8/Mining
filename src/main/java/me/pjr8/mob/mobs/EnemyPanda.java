@@ -1,23 +1,17 @@
 package me.pjr8.mob.mobs;
 
-import me.pjr8.mob.objects.IMob;
-import me.pjr8.mob.objects.MobStats;
+import me.pjr8.mob.objects.AbstractMob;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Panda;
-import org.bukkit.entity.Player;
 
 import java.util.Objects;
 
-public class EnemyPanda extends MobStats implements IMob {
+public class EnemyPanda extends AbstractMob {
 
     public EnemyPanda() {
-        setEntityType(Panda.class);
-        maxHealth = 50;
-        currentHealth = maxHealth;
-        damage = 5;
-        name = "Panda";
+        super(Panda.class, 20, 5, "Panda");
     }
 
     @Override
@@ -32,10 +26,5 @@ public class EnemyPanda extends MobStats implements IMob {
         entity.setCustomNameVisible(true);
         setCustomName();
         return entity;
-    }
-
-    @Override
-    public void onAttack(Player player) {
-        player.sendMessage("You have been attacked by a " + name + "!");
     }
 }

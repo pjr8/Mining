@@ -2,7 +2,7 @@ package me.pjr8.mob;
 
 import me.pjr8.mob.mobs.EnemyPanda;
 import me.pjr8.mob.mobs.EnemySpider;
-import me.pjr8.mob.objects.IMob;
+import me.pjr8.mob.objects.AbstractMob;
 import me.pjr8.mob.objects.MobType;
 import me.pjr8.mob.objects.SpawnerData;
 import me.pjr8.update.UpdateEvent;
@@ -21,7 +21,7 @@ import java.util.HashSet;
 
 public class MobHandler implements Listener {
 
-    public final HashMap<Entity, IMob> currentMobs = new HashMap<>();
+    public final HashMap<Entity, AbstractMob> currentMobs = new HashMap<>();
 
     public final HashSet<SpawnerData> spawners = new HashSet<>();
 
@@ -34,11 +34,11 @@ public class MobHandler implements Listener {
             spawnerData.getCurrentMobs().forEach(this::removeMobIfOutOfRange);
             if (spawnerData.getCurrentMobs().size() < spawnerData.getMaxMobs() && System.currentTimeMillis() - spawnerData.getLastSpawn() > (spawnerData.getSpawnDelay()) * 1000L) {
                 for (int i = 0; i < spawnerData.getMobsPerSpawn(); i++) {
-                    IMob iMob = getMobByType(spawnerData.getMobType());
-                    iMob.setSpawnLocation(spawnerData.getSpawnerLocation());
-                    iMob.setSpawner(spawnerData);
-                    spawnerData.getCurrentMobs().add(iMob.spawn(spawnerData.getSpawnerLocation()));
-                    currentMobs.put(iMob.getEntity(), iMob);
+                    AbstractMob abstractMob = getMobByType(spawnerData.getMobType());
+                    abstractMob.setSpawnLocation(spawnerData.getSpawnerLocation());
+                    abstractMob.setSpawner(spawnerData);
+                    spawnerData.getCurrentMobs().add(abstractMob.spawn(spawnerData.getSpawnerLocation()));
+                    currentMobs.put(abstractMob.getEntity(), abstractMob);
                 }
                 spawnerData.setLastSpawn(System.currentTimeMillis());
             }
@@ -46,8 +46,8 @@ public class MobHandler implements Listener {
     }
 
     private void removeMobIfOutOfRange(Entity entity) {
-        IMob iMob = currentMobs.get(entity);
-        if (entity.getLocation().distance(iMob.getSpawnLocation()) > MOB_REMOVE_DISTANCE) {
+        AbstractMob abstractMob = currentMobs.get(entity);
+        if (entity.getLocation().distance(abstractMob.getSpawnLocation()) > MOB_REMOVE_DISTANCE) {
             entity.getPassengers().forEach(Entity::remove);
             currentMobs.get(entity).getSpawner().getCurrentMobs().remove(entity);
             currentMobs.remove(entity);
@@ -85,9 +85,9 @@ public class MobHandler implements Listener {
     }
 
     public void addMob(MobType mobType, Location location) {
-        IMob iMob = getMobByType(mobType);
-        iMob.setSpawnLocation(location);
-        currentMobs.put(iMob.spawn(location), iMob);
+        AbstractMob abstractMob = getMobByType(mobType);
+        abstractMob.setSpawnLocation(location);
+        currentMobs.put(abstractMob.spawn(location), abstractMob);
     }
 
     public void aggroAll(Player player) {
@@ -108,9 +108,11 @@ public class MobHandler implements Listener {
     }
 
     public void removeMob(Entity entity) {
-        IMob iMob = currentMobs.get(entity);
+        AbstractMob abstractMob = currentMobs.get(entity);
         entity.getPassengers().forEach(Entity::remove);
-        iMob.getSpawner().getCurrentMobs().remove(entity);
+        if (abstractMob.getSpawner() != null) {
+            abstractMob.getSpawner().getCurrentMobs().remove(entity);
+        }
         entity.remove();
         currentMobs.remove(entity);
     }
@@ -124,7 +126,7 @@ public class MobHandler implements Listener {
         }
     }
 
-    private IMob getMobByType(MobType mobType) {
+    private AbstractMob getMobByType(MobType mobType) {
         return switch (mobType) {
             case PANDA -> new EnemyPanda();
             case SPIDER -> new EnemySpider();
