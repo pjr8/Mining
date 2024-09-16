@@ -1,7 +1,7 @@
 package me.pjr8.forge.commands;
 
 import me.pjr8.Main;
-import me.pjr8.database.PlayerData;
+import me.pjr8.database.player.PlayerData;
 import me.pjr8.forge.Forge;
 import me.pjr8.forge.enums.ForgeMenuType;
 import me.pjr8.forge.gui.ForgeMenu;

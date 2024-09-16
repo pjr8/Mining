@@ -3,7 +3,7 @@ package me.pjr8.forge.gui;
 import lombok.Data;
 import me.pjr8.Item.Item;
 import me.pjr8.Main;
-import me.pjr8.database.PlayerData;
+import me.pjr8.database.player.PlayerData;
 import me.pjr8.forge.Forge;
 import me.pjr8.forge.enums.ForgeItem;
 import me.pjr8.forge.enums.ForgeMenuType;

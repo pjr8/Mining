@@ -7,7 +7,8 @@ import me.pjr8.chat.Chat;
 import me.pjr8.commands.CommandAdmin;
 import me.pjr8.commands.CommandTest;
 import me.pjr8.database.Database;
-import me.pjr8.database.PlayerDataHandler;
+import me.pjr8.database.player.PlayerDataHandler;
+import me.pjr8.database.spawner.SpawnerDataHandler;
 import me.pjr8.forge.Forge;
 import me.pjr8.forge.commands.CommandForge;
 import me.pjr8.mining.Mining;
@@ -17,7 +18,6 @@ import me.pjr8.mob.commands.CommandMob;
 import me.pjr8.mob.commands.CommandSpawner;
 import me.pjr8.rank.commands.CommandRank;
 import me.pjr8.update.UpdateService;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -37,7 +37,9 @@ public class Main extends JavaPlugin {
     public static ProtocolManager protocolManager;
     public static UpdateService updateService;
     public static MobHandler mobHandler;
+    public static SpawnerDataHandler spawnerDataHandler;
     public static HashSet<Player> adminMode = new HashSet<Player>();
+
 
     public void onEnable() {
         registerClasses();
@@ -61,7 +63,8 @@ public class Main extends JavaPlugin {
         mining = new Mining(playerDataHandler, protocolManager, plugin);
         chat = new Chat(playerDataHandler);
         forge = new Forge(playerDataHandler);
-        mobHandler = new MobHandler();
+        spawnerDataHandler = new SpawnerDataHandler(database);
+        mobHandler = new MobHandler(spawnerDataHandler.loadSpawnerData());
     }
 
     public void registerEvents() {
@@ -85,12 +88,10 @@ public class Main extends JavaPlugin {
 
     public void shutdown() {
         mobHandler.shutdown();
-        try {
-            playerDataHandler.shutdown();
-        } catch (SQLException e) {
-            logger.log(Level.SEVERE, "COULD NOT SAVE PLAYER DATA TO DATABASE");
-        }
+        playerDataHandler.shutdown();
+        spawnerDataHandler.saveSpawnersData(mobHandler.spawners);
         logger.info("has been disabled.");
         updateService.stop();
+        database.shutdown();
     }
 }

@@ -1,16 +1,16 @@
-package me.pjr8.database;
+package me.pjr8.database.player;
 
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.UpdateOptions;
 import lombok.Getter;
 import me.pjr8.Main;
+import me.pjr8.database.Database;
 import me.pjr8.forge.objects.ForgeData;
 import me.pjr8.mining.objects.PickaxeData;
 import me.pjr8.rank.GameRank;
 import me.pjr8.rank.ServerRank;
 import net.md_5.bungee.api.ChatColor;
 import org.bson.Document;
-import org.bson.conversions.Bson;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
@@ -21,14 +21,11 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.io.*;
-import java.sql.SQLException;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.logging.Level;
-
-import static me.pjr8.database.Database.databaseName;
 
 @Getter
 public class PlayerDataHandler implements Listener {
@@ -44,7 +41,7 @@ public class PlayerDataHandler implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onJoin(PlayerJoinEvent event) {
         UUID uuid = event.getPlayer().getUniqueId();
-        Document document = database.mongoClient.getDatabase(databaseName).getCollection("player_data").find(Filters.eq("uuid", uuid.toString())).first();
+        Document document = database.getPlayerCollection().find(Filters.eq("uuid", uuid.toString())).first();
         if (document != null) {
             PlayerData playerData = getPlayerDataFromDocument(document);
             assert playerData != null;
@@ -83,7 +80,7 @@ public class PlayerDataHandler implements Listener {
         updateOnPlayerQuit(event.getPlayer().getUniqueId());
     }
 
-    public void shutdown() throws SQLException {
+    public void shutdown() {
         for (Player player : Bukkit.getOnlinePlayers()) {
             updateOnPlayerQuit(player.getUniqueId());
             player.kickPlayer(ChatColor.of("#08ff35") + "Server Restarting");
@@ -106,7 +103,7 @@ public class PlayerDataHandler implements Listener {
     }
 
     public PlayerData getPlayerData(UUID uuid) {
-        Document document = database.mongoClient.getDatabase(databaseName).getCollection("player_data").find(Filters.eq("uuid", uuid)).first();
+        Document document = database.getPlayerCollection().find(Filters.eq("uuid", uuid)).first();
         if (document == null) {
             return null;
         } else {
@@ -124,7 +121,7 @@ public class PlayerDataHandler implements Listener {
                     .append("player_stats", serializeData(playerData.getPlayerStats()))
                     .append("forge_data", serializeData(playerData.getForgeData()))
                     .append("pickaxe_data", serializeData(playerData.getPickaxeData()));
-            database.mongoClient.getDatabase(databaseName).getCollection("player_data").updateOne(Filters.eq("uuid", playerData.getUuid().toString()), new Document("$set", document), new UpdateOptions().upsert(true));
+            database.getPlayerCollection().updateOne(Filters.eq("uuid", playerData.getUuid().toString()), new Document("$set", document), new UpdateOptions().upsert(true));
             return true;
         } catch (Exception e) {
             Main.logger.log(Level.SEVERE, "COULD NOT SAVE PLAYER DATA");

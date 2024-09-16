@@ -1,7 +1,7 @@
 package me.pjr8.rank.commands;
 
 import me.pjr8.Main;
-import me.pjr8.database.PlayerData;
+import me.pjr8.database.player.PlayerData;
 import me.pjr8.rank.GameRank;
 import me.pjr8.rank.ServerRank;
 import org.bukkit.Bukkit;

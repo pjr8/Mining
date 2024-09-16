@@ -1,4 +1,4 @@
-package me.pjr8.database;
+package me.pjr8.database.player;
 
 import lombok.Data;
 import me.pjr8.forge.objects.ForgeData;

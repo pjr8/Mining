@@ -1,5 +1,6 @@
 package me.pjr8.mob;
 
+import me.pjr8.Main;
 import me.pjr8.mob.mobs.EnemyPanda;
 import me.pjr8.mob.mobs.EnemySpider;
 import me.pjr8.mob.objects.AbstractMob;
@@ -18,19 +19,30 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Objects;
 
 public class MobHandler implements Listener {
 
     public final HashMap<Entity, AbstractMob> currentMobs = new HashMap<>();
 
-    public final HashSet<SpawnerData> spawners = new HashSet<>();
+    public final HashSet<SpawnerData> spawners;
 
     public int MOB_REMOVE_DISTANCE = 25;
 
+    public static boolean doSpawning = true;
+
+    public MobHandler(HashSet<SpawnerData> spawners) {
+        this.spawners = spawners;
+    }
+
     @EventHandler
     public void doSpawner(UpdateEvent event) {
+        if (!doSpawning) return;
         if (event.getType() != UpdateType.TICK) return;
         spawners.forEach((spawnerData -> {
+            if (Objects.requireNonNull(spawnerData.getSpawnerLocation().getWorld()).getNearbyEntities(spawnerData.getSpawnerLocation(), 10, 10, 10).stream().noneMatch(entity -> entity instanceof Player)) {
+                return;
+            }
             spawnerData.getCurrentMobs().forEach(this::removeMobIfOutOfRange);
             if (spawnerData.getCurrentMobs().size() < spawnerData.getMaxMobs() && System.currentTimeMillis() - spawnerData.getLastSpawn() > (spawnerData.getSpawnDelay()) * 1000L) {
                 for (int i = 0; i < spawnerData.getMobsPerSpawn(); i++) {
@@ -117,13 +129,9 @@ public class MobHandler implements Listener {
         currentMobs.remove(entity);
     }
 
-    public void shutdown() {
-        for (Entity entity : currentMobs.keySet()) {
-            for (Entity passenger : entity.getPassengers()) {
-                passenger.remove();
-            }
-            entity.remove();
-        }
+    public void removeSpawner(SpawnerData spawnerData) {
+        spawners.remove(spawnerData);
+        Main.spawnerDataHandler.deleteSpawner(spawnerData);
     }
 
     private AbstractMob getMobByType(MobType mobType) {
@@ -131,5 +139,15 @@ public class MobHandler implements Listener {
             case PANDA -> new EnemyPanda();
             case SPIDER -> new EnemySpider();
         };
+    }
+
+    public void shutdown() {
+        doSpawning = false;
+        for (Entity entity : currentMobs.keySet()) {
+            for (Entity passenger : entity.getPassengers()) {
+                passenger.remove();
+            }
+            entity.remove();
+        }
     }
 }

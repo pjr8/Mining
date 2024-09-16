@@ -14,6 +14,14 @@ public class CommandSpawner implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
         if (commandSender instanceof Player player) {
+            if (args.length == 0) {
+                player.sendMessage("Usage: /spawner create <mob> | list | remove | distance <distance>");
+
+                Main.mobHandler.spawners.forEach(spawnerData -> {
+                    player.sendMessage(spawnerData.toString());
+                });
+                return true;
+            }
             if (args.length == 1) {
                 if (args[0].equalsIgnoreCase("list")) {
                     player.sendMessage("Spawners:");
@@ -21,7 +29,10 @@ public class CommandSpawner implements CommandExecutor {
                     Main.mobHandler.spawners.forEach(spawnerData -> player.sendMessage("[" + i.getAndIncrement() + "] " + spawnerData.getMobType().name() + " at " + spawnerData.getSpawnerLocation().toString()));
                     return true;
                 } else if (args[0].equalsIgnoreCase("remove")) {
-                    Main.mobHandler.spawners.clear();
+                    Main.mobHandler.spawners.forEach(spawnerData -> {
+                        Main.mobHandler.removeSpawner(spawnerData);
+                    });
+
                 }
             }
             if (args.length == 2) {

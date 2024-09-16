@@ -1,7 +1,7 @@
 package me.pjr8.chat;
 
-import me.pjr8.database.PlayerData;
-import me.pjr8.database.PlayerDataHandler;
+import me.pjr8.database.player.PlayerData;
+import me.pjr8.database.player.PlayerDataHandler;
 import me.pjr8.rank.GameRank;
 import me.pjr8.rank.ServerRank;
 import net.md_5.bungee.api.ChatColor;
@@ -52,7 +52,7 @@ public class Chat implements Listener {
 
     public static String setGradient(String string, Color beginningColor, Color endColor) {
         StringBuilder toPrint = new StringBuilder();
-        int red = 0, green = 0, blue = 0;
+        int red, green, blue;
         char[] charArray = string.toCharArray();
         int length = string.length();
         for (int i = 1 ; i < length+1 ; i++) {
@@ -61,10 +61,7 @@ public class Chat implements Listener {
             green = (int) Math.round(endColor.getGreen() * percentage + beginningColor.getGreen() * (1 - percentage));
             blue = (int) Math.round(endColor.getBlue() * percentage + beginningColor.getBlue() * (1 - percentage));
             toPrint.append(ChatColor.of(new Color(red, green, blue))).append(charArray[i - 1]);
-
         }
         return toPrint.toString();
     }
-
-
 }

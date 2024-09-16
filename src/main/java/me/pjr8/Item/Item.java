@@ -129,7 +129,7 @@ public enum Item {
         }
         Rarity rarity = item.getRarity();
         if (item.getLore() != null) {
-            ArrayList<String> lore = new ArrayList<String>(item.getLore());
+            ArrayList<String> lore = new ArrayList<>(item.getLore());
             lore.add("");
             lore.add(ChatColor.RESET + "" + ChatColor.of(rarity.getColor()) + rarity.getName());
             itemMeta.setLore(lore);

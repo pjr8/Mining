@@ -14,7 +14,7 @@ import com.comphenix.protocol.wrappers.EnumWrappers;
 import com.comphenix.protocol.wrappers.WrappedBlockData;
 import me.pjr8.Main;
 import me.pjr8.chat.Chat;
-import me.pjr8.database.PlayerDataHandler;
+import me.pjr8.database.player.PlayerDataHandler;
 import me.pjr8.mining.enums.OreType;
 import me.pjr8.mining.objects.BlockHolder;
 import me.pjr8.mining.objects.BlockRespawn;
